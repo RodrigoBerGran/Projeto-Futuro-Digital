@@ -4,8 +4,8 @@ import './App.css'
 import Home from './pages/Home/Home.jsx'
 import Login from './pages/Login/Login.jsx'
 import NovoUsuario from './pages/NovoUsuario/NovoUsuario.jsx'
-import Leads from './pages/Leads/Leads.jsx'
-import Dashboards from './pages/Dashboards/Dashboards.jsx'
+import Cards from './pages/Cards/Cards.jsx'
+import NovoCliente from './pages/NovoCliente/NovoCliente.jsx'
 
 function App() {
 
@@ -14,9 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/NovoUsuario" element={<NovoUsuario />} />
-        <Route path="/Leads" element={<Leads />} />
-        <Route path="/Dashboards" element={<Dashboards />} />
+        <Route path="/Novo-Usuario" element={<NovoUsuario />} />
+        <Route path="/Cards" element={<Cards />} />
+        <Route path="/Novo-Cliente" element={<NovoCliente />} />
       </Routes>
     </>
   )

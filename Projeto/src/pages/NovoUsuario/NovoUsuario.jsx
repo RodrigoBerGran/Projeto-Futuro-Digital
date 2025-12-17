@@ -13,53 +13,53 @@ function NovoUsuario() {
         <>
             <form action="#">
                 <h1>Novo Usuário</h1>
-                <label>Nome: 
+                <label>Nome:
                     <input
-                    type="text" 
-                    name="nome"
-                    placeholder="Nome de Usuário"
-                    value={nome} 
-                    onChange={(e) => setNome(e.target.value)}
+                        type="text"
+                        name="nome"
+                        placeholder="Nome de Usuário"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
                     /></label>
 
-                <label>Data de Nascimento: 
+                <label>Data de Nascimento:
                     <input
-                    type="date"
-                    name="dataNascimento" 
-                    placeholder='dd/mm/aaaa'
-                    value={dataNascimento} 
-                    onChange={(e) => setDataNascimento(e.target.value)}
+                        type="date"
+                        name="dataNascimento"
+                        placeholder='dd/mm/aaaa'
+                        value={dataNascimento}
+                        onChange={(e) => setDataNascimento(e.target.value)}
                     /></label>
 
-                <label>E-mail: 
+                <label>E-mail:
                     <input
-                    type="email"
-                    name="email"
-                    placeholder='nome@exemplo.com'
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        name="email"
+                        placeholder='nome@exemplo.com'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     /></label>
 
-                <label>Senha: 
+                <label>Senha:
                     <input
-                    type="password"
-                    name="senha"
-                    placeholder="Sua Senha"
-                    value={senha} 
-                    onChange={(e) => setSenha(e.target.value)}
+                        type="password"
+                        name="senha"
+                        placeholder="Sua Senha"
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
                     /></label>
 
-                <label>Confirmar Senha: 
+                <label>Confirmar Senha:
                     <input
-                    type="password"
-                    name="confirmarSenha"
-                    placeholder="Confirmar Senha"
-                    value={confirmarSenha} 
-                    onChange={(e) => setConfirmarSenha(e.target.value)} 
+                        type="password"
+                        name="confirmarSenha"
+                        placeholder="Confirmar Senha"
+                        value={confirmarSenha}
+                        onChange={(e) => setConfirmarSenha(e.target.value)}
                     /></label>
 
                 <button type="button">Cadastar</button>
-            </form >
+            </form>
         </>
     )
 }
