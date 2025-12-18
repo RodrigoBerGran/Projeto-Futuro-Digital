@@ -1,5 +1,6 @@
 import './Login.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Login() {
 
@@ -30,6 +31,11 @@ function Login() {
 
                 <button type="button">Entrar</button>
             </form>
+            <nav>
+            <Link to="/Novo-Usuario">Novo Usuário</Link><br />
+            <Link to="/Clientes">Clientes</Link><br />
+            <Link to="/">Início</Link>
+            </nav>
         </>
     )
 }

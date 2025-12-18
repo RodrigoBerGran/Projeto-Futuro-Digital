@@ -1,5 +1,6 @@
 import './NovoUsuario.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function NovoUsuario() {
 
@@ -58,8 +59,9 @@ function NovoUsuario() {
                         onChange={(e) => setConfirmarSenha(e.target.value)}
                     /></label>
 
-                <button type="button">Cadastar</button>
+                <button type="button" onClick={casdastrar}>Cadastar</button>
             </form>
+            <Link to="/">Início</Link>
         </>
     )
 }

@@ -1,5 +1,6 @@
 import './NovoCliente.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function NovoCliente() {
 
@@ -152,6 +153,7 @@ function NovoCliente() {
 
                 <button type="button">Cadastrar</button>
             </form>
+            <Link to="/">Início</Link>
         </>
     )
 }
