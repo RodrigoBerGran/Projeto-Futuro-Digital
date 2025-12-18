@@ -10,6 +10,10 @@ function NovoUsuario() {
     const [senha, setSenha] = useState('')
     const [confirmarSenha, setConfirmarSenha] = useState('')
 
+    const handleCadastrar = () => {
+        // Lógica de cadastro aqui
+    }
+
     return (
         <>
             <form action="#">
@@ -59,7 +63,7 @@ function NovoUsuario() {
                         onChange={(e) => setConfirmarSenha(e.target.value)}
                     /></label>
 
-                <button type="button" onClick={casdastrar}>Cadastar</button>
+                <button type="button" onClick={handleCadastrar}>Cadastar</button>
             </form>
             <Link to="/">Início</Link>
         </>

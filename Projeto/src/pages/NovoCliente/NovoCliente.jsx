@@ -16,6 +16,10 @@ function NovoCliente() {
     const [consumo, setConsumo] = useState('')
     const [conta, setConta] = useState('')
 
+    const handleCadastrar = () => {
+
+    }
+
 
     return (
         <>
@@ -151,7 +155,7 @@ function NovoCliente() {
                         onChange={(e) => setConta(e.target.value)}
                     /></label>
 
-                <button type="button">Cadastrar</button>
+                <button type="button" onClick={handleCadastrar}>Cadastrar</button>
             </form>
             <Link to="/">Início</Link>
         </>
