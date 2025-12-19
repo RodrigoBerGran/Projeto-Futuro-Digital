@@ -18,6 +18,21 @@ function NovoCliente() {
 
     const handleCadastrar = () => {
 
+        let clienteNovo = {
+            nome: nome,
+            telefone: telefone,
+            email: email,
+            rua: rua,
+            numero: numero,
+            cep: cep,
+            bairro: bairro,
+            cidade: cidade,
+            estado: estado,
+            consumo: consumo,
+            conta: conta
+        };
+
+        localStorage.setItem('dadosCliente', JSON.stringify(clienteNovo));
     }
 
 
@@ -27,6 +42,7 @@ function NovoCliente() {
                 <h1>Clientes</h1>
                 <label>Nome:
                     <input
+                        required
                         type="text"
                         name="nome"
                         placeholder="Nome Completo"
@@ -36,6 +52,7 @@ function NovoCliente() {
 
                 <label>Telefone:
                     <input
+                        required
                         type="number"
                         name="telefone"
                         placeholder="(99)99999-9999"
@@ -157,7 +174,9 @@ function NovoCliente() {
 
                 <button type="button" onClick={handleCadastrar}>Cadastrar</button>
             </form>
-            <Link to="/">Início</Link>
+            <nav>
+                <Link to="/">Início</Link>
+            </nav>
         </>
     )
 }

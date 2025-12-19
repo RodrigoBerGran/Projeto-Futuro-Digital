@@ -11,7 +11,24 @@ function NovoUsuario() {
     const [confirmarSenha, setConfirmarSenha] = useState('')
 
     const handleCadastrar = () => {
-        // Lógica de cadastro aqui
+
+        // Lógica de cadastro:
+
+        if(senha !== confirmarSenha) {
+            alert("As senhas não coincidem!")
+            return
+        };
+
+        // 1. Tranformar os dados "inputados" em uma variável do tipo objeto JavaScript:
+        let usuarioNovo = {
+            nome: nome,
+            dataNascimento: dataNascimento,
+            email: email,
+            senha: senha
+        };
+
+        // 2. Armazenar localmente o objeto JavaScript e converter-lo para JSON:
+        localStorage.setItem('dadosUsuario', JSON.stringify(usuarioNovo));
     }
 
     return (
@@ -20,6 +37,7 @@ function NovoUsuario() {
                 <h1>Novo Usuário</h1>
                 <label>Nome:
                     <input
+                        required
                         type="text"
                         name="nome"
                         placeholder="Nome de Usuário"
@@ -47,6 +65,7 @@ function NovoUsuario() {
 
                 <label>Senha:
                     <input
+                        required
                         type="password"
                         name="senha"
                         placeholder="Sua Senha"
@@ -56,6 +75,7 @@ function NovoUsuario() {
 
                 <label>Confirmar Senha:
                     <input
+                        required
                         type="password"
                         name="confirmarSenha"
                         placeholder="Confirmar Senha"
