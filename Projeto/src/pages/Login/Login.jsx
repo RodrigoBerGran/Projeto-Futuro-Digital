@@ -17,10 +17,6 @@ function Login() {
                 <form action="#" id="login">
 
                     <div>
-                        <h1>Login</h1>
-                    </div>
-                    <hr />
-                    <div>
                         <input
                             type="text"
                             name="nome"
@@ -43,15 +39,16 @@ function Login() {
                     </div>
 
                     <div>
-                        <button type="button" onClick={handleEntrar}>Entrar</button>
+                        <button type="button" id="entrar-button" onClick={handleEntrar}>Entrar</button>
                     </div>
 
-                    <nav>
-                        <Link to="/Novo-Usuario">Novo Usuário</Link>
-                        <Link to="/">Início</Link>
-                    </nav>
-                </form>
-            </div>
+                    <div id="novo-inicio">
+                            <Link to="/"><button type="button" id="pagina-inicial">Início</button></Link>
+                            <Link to="/Novo-Usuario"><button type="button" id="novo-usuario">Novo</button></Link>
+                    </div>
+
+                </form >
+            </div >
         </>
     )
 }

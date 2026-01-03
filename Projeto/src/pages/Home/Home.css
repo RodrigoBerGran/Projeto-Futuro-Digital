@@ -21,11 +21,11 @@ img.logo {
     max-width: auto;
 }
 
-nav {
+#home-nav {
     margin-top: 30px;
 }
 
-.login-button {
+#login-button {
     padding: 10px 20px;
     font-size: 1.2rem;
     background: linear-gradient(rgba(15, 125, 195, 1) 0%, rgba(5, 50, 125, 1) 100%);
@@ -38,6 +38,6 @@ nav {
     font-weight: bold;
 }
 
-.login-button:hover {
+#login-button:hover {
     background: linear-gradient(rgba(105, 185, 30, 1) 0%, rgb(45, 115, 15) 100%);
 }
