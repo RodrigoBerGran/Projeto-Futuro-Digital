@@ -6,6 +6,7 @@ function NovoUsuario() {
 
     const [nome, setNome] = useState('')
     const [dataNascimento, setDataNascimento] = useState('')
+    const [telefone, setTelefone] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [confirmarSenha, setConfirmarSenha] = useState('')
@@ -14,7 +15,7 @@ function NovoUsuario() {
 
         // Lógica de cadastro:
 
-        if(senha !== confirmarSenha) {
+        if (senha !== confirmarSenha) {
             alert("As senhas não coincidem!")
             return
         };
@@ -23,6 +24,7 @@ function NovoUsuario() {
         let usuarioNovo = {
             nome: nome,
             dataNascimento: dataNascimento,
+            telefone: telefone,
             email: email,
             senha: senha
         };
@@ -33,59 +35,100 @@ function NovoUsuario() {
 
     return (
         <>
-            <form action="#">
-                <h1>Novo Usuário</h1>
-                <label>Nome:
-                    <input
-                        required
-                        type="text"
-                        name="nome"
-                        placeholder="Nome de Usuário"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                    /></label>
+            <form id="usuario-container" action="#">
+                <h1><spam id="new">Novo</spam> <spam id="user">Usuário</spam></h1>
+                <div className='inline'>
+                    <div>
+                        <label>Nome:
+                            <input
+                                required
+                                type="text"
+                                name="nome"
+                                id="nome-usuario"
+                                placeholder="Nome de Usuário"
+                                value={nome}
+                                onChange={(e) => setNome(e.target.value)}
+                            /></label>
+                    </div>
 
-                <label>Data de Nascimento:
-                    <input
-                        type="date"
-                        name="dataNascimento"
-                        placeholder='dd/mm/aaaa'
-                        value={dataNascimento}
-                        onChange={(e) => setDataNascimento(e.target.value)}
-                    /></label>
+                    <div>
+                        <label>Data de Nascimento:
+                            <input
+                                type="date"
+                                name="dataNascimento"
+                                id="usuario-nascimento"
+                                placeholder='dd/mm/aaaa'
+                                value={dataNascimento}
+                                onChange={(e) => setDataNascimento(e.target.value)}
+                            /></label>
+                    </div>
+                </div>
 
-                <label>E-mail:
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder='nome@exemplo.com'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    /></label>
+                <div className='inline'>
+                    <div>
+                        <label>Telefone:
+                            <input
+                                type="tel"
+                                name="telefone"
+                                id="usuario-telefone"
+                                placeholder="(00) 0 0000-0000"
+                                value={telefone}
+                                onChange={(e) => setTelefone(e.target.value)}
+                            /></label>
+                    </div>
 
-                <label>Senha:
-                    <input
-                        required
-                        type="password"
-                        name="senha"
-                        placeholder="Sua Senha"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                    /></label>
+                    <div>
+                        <label>E-mail:
+                            <input
+                                type="email"
+                                name="email"
+                                id="usuario-email"
+                                placeholder='nome@exemplo.com'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            /></label>
+                    </div>
+                </div>
 
-                <label>Confirmar Senha:
-                    <input
-                        required
-                        type="password"
-                        name="confirmarSenha"
-                        placeholder="Confirmar Senha"
-                        value={confirmarSenha}
-                        onChange={(e) => setConfirmarSenha(e.target.value)}
-                    /></label>
+                <div className='inline'>
+                    <div>
+                        <label>Senha:
+                            <input
+                                required
+                                type="password"
+                                name="senha"
+                                id="usuario-senha"
+                                placeholder="Sua Senha"
+                                value={senha}
+                                onChange={(e) => setSenha(e.target.value)}
+                            /></label>
+                    </div>
 
-                <button type="button" onClick={handleCadastrar}>Cadastar</button>
+                    <div>
+                        <label>Confirmar Senha:
+                            <input
+                                required
+                                type="password"
+                                name="confirmarSenha"
+                                id="usuario-confirmar-senha"
+                                placeholder="Confirmar Senha"
+                                value={confirmarSenha}
+                                onChange={(e) => setConfirmarSenha(e.target.value)}
+                            /></label>
+                    </div>
+                </div>
+
+                <div className='inline'>
+                    <div>
+                        <Link to="/"><button type="button" id="inicio-button">Início</button></Link>
+                    </div>
+                    <div>
+                        <button type="button" onClick={handleCadastrar} id="cadastrar-button">Cadastrar</button>
+                    </div>
+                </div>
+
             </form>
-            <Link to="/">Início</Link>
+
         </>
     )
 }

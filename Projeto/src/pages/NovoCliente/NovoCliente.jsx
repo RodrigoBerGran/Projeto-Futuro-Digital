@@ -53,9 +53,9 @@ function NovoCliente() {
                 <label>Telefone:
                     <input
                         required
-                        type="number"
+                        type="tel"
                         name="telefone"
-                        placeholder="(99)99999-9999"
+                        placeholder="(00) 0 0000-0000"
                         value={telefone}
                         onChange={(e) => setTelefone(e.target.value)}
                     /></label>

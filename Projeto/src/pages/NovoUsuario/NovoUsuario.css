@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#new,
+#user {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+#new {
+    color: #107DC2;
+    background-image: linear-gradient(#107DC2, #05317D 100%);
+}
+
+#user {
+    color: #69b91e;
+    background-image: linear-gradient(#69b91e, #2d730f 100%);
+}
+
+#usuario-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.inline {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+#nome-usuario,
+#usuario-nascimento,
+#usuario-telefone,
+#usuario-email,
+#usuario-senha,
+#usuario-confirmar-senha {
+    width: 175px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 5px;
+}
+
+#inicio-button,
+#cadastrar-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(rgba(15, 125, 195) 0%, rgba(5, 50, 125) 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+    width: 150px;
+}
+
+#inicio-button:hover,
+#cadastrar-button:hover {
+    background: linear-gradient(rgba(105, 185, 30) 0%, rgb(45, 115, 15) 100%);
+}
