@@ -15,7 +15,6 @@ function Login() {
         <>
             <div id="container-login">
                 <form action="#" id="login">
-
                     <div>
                         <input
                             type="text"
@@ -43,10 +42,9 @@ function Login() {
                     </div>
 
                     <div id="novo-inicio">
-                            <Link to="/"><button type="button" id="pagina-inicial">Início</button></Link>
-                            <Link to="/Novo-Usuario"><button type="button" id="novo-usuario">Novo</button></Link>
+                        <Link to="/"><button type="button" id="pagina-inicial">Início</button></Link>
+                        <Link to="/Novo-Usuario"><button type="button" id="novo-usuario">Novo</button></Link>
                     </div>
-
                 </form >
             </div >
         </>

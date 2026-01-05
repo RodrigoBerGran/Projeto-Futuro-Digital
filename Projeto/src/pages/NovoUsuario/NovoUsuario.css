@@ -36,13 +36,18 @@ h1 {
     width: 100vw;
 }
 
+form {
+    box-shadow: 0px 0px 15px 15px rgba(200, 200, 200);
+}
+
 .inline {
     display: inline-flex;
     justify-content: space-between;
-    width: 400px;
+    width: 350px;
+    gap: 10px;
 }
 
-#nome-usuario,
+#usuario-nome,
 #usuario-nascimento,
 #usuario-telefone,
 #usuario-email,
@@ -53,6 +58,11 @@ h1 {
     font-size: 1rem;
     border: 1px solid rgb(150, 150, 150);
     border-radius: 5px;
+}
+
+#botoes-container {
+    display: flex;
+    justify-content: center;
 }
 
 #inicio-button,
