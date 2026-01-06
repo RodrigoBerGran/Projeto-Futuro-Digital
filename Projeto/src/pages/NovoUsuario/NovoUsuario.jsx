@@ -1,4 +1,3 @@
-import './NovoUsuario.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -38,7 +37,7 @@ function NovoUsuario() {
             <form id="usuario-container" action="#">
                 <h1><span id="new">Novo</span> <span id="user">Usuário</span></h1>
 
-                <div className='inline'>
+                <div className='novo-usuario-input'>
                     <label>Nome:
                         <input
                             required
@@ -61,7 +60,7 @@ function NovoUsuario() {
                         /></label>
                 </div>
 
-                <div className='inline'>
+                <div className='novo-usuario-input'>
                     <label>Telefone:
                         <input
                             type="tel"
@@ -83,7 +82,7 @@ function NovoUsuario() {
                         /></label>
                 </div>
 
-                <div className='inline'>
+                <div className='novo-usuario-input'>
                     <label>Senha:
                         <input
                             required
@@ -107,9 +106,9 @@ function NovoUsuario() {
                         /></label>
                 </div>
 
-                <div className='inline' id="botoes-container">
-                    <Link to="/"><button type="button" id="inicio-button">Início</button></Link>
-                    <button type="button" onClick={handleCadastrar} id="cadastrar-button">Cadastrar</button>
+                <div className='botoes-grupo'>
+                    <Link to="/" className="botoes-agrupados">Início</Link>
+                    <button type="button" onClick={handleCadastrar} className="botoes-agrupados">Cadastrar</button>
                 </div>
             </form>
         </>

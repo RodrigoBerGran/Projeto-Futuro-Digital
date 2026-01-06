@@ -62,7 +62,7 @@ form {
 
 #botoes-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #inicio-button,

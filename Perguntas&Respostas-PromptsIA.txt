@@ -1,0 +1,78 @@
+Perguntas/prompts feitos no Google/Gemini.
+
+P) O que é NPM?
+R: NPM (Node Package Manager) é o gerenciador de pacotes padrão para JavaScript, um repositório online (npmjs.com) e uma ferramenta de linha de comando (CLI) que permite aos desenvolvedores encontrar, instalar, compartilhar e gerenciar bibliotecas e módulos de código reutilizáveis (pacotes) para projetos Node.js e frontend, simplificando dependências e garantindo a organização e versão do código através do arquivo package.json. 
+O que ele faz?
+Repositório: É um vasto banco de dados público com milhões de pacotes (código) criados por outros desenvolvedores.
+Gerenciador de Dependências: Instala, atualiza e remove bibliotecas necessárias para seu projeto (ex: npm install express).
+Ferramenta CLI: Você interage com ele pelo terminal (prompt de comando) para executar comandos como npm install, npm publish, npm run.
+Arquivo package.json: Define metadados do projeto, lista as dependências e suas versões, garantindo consistência em diferentes ambientes.
+
+P) O que são dependências em um projeto React?
+R: Dependências em um projeto React são bibliotecas, frameworks ou pacotes externos (gerenciados via npm/yarn) dos quais seu código depende para funcionar corretamente em produção, como o próprio React, React Router para navegação, ou bibliotecas de UI como Material-UI, que fornecem funcionalidades prontas e são essenciais para o funcionamento do seu aplicativo, sendo listadas no package.json. 
+Em termos mais simples:
+Imagine seu projeto React como uma casa. As dependências são os canos, fiação elétrica, telhado, etc., que você compra e instala para que a casa seja funcional. Sem eles, sua casa (aplicativo) não ficaria de pé ou não teria as funções básicas (como ter água ou luz). 
+Tipos comuns de dependências em React:
+react e react-dom: O núcleo da biblioteca React e o que permite renderizar componentes no navegador.
+Bibliotecas de UI: Como Material-UI/MUI, Ant Design ou Chakra UI, que oferecem componentes visuais prontos.
+Roteamento: React Router, para criar navegação entre diferentes páginas.
+Gerenciamento de Estado: Redux ou Zustand, para gerenciar dados complexos.
+Ferramentas de build/desenvolvimento (DevDependencies): Ferramentas como Webpack, Babel, ESLint, Jest, que ajudam no desenvolvimento (compilação, testes, linting) mas não são necessárias quando o app está em produção, e ficam em devDependencies no package.json. 
+Onde elas ficam no projeto:
+As dependências são listadas no arquivo package.json do seu projeto, na seção dependencies (para o que roda em produção) e devDependencies (para o que roda só no desenvolvimento).
+
+P) O que é Node.js?
+R: Node.js é um ambiente de execução JavaScript de código aberto e multiplataforma que permite usar JavaScript para construir aplicações no servidor (backend), ferramentas de linha de comando e scripts, executando código fora do navegador através do motor V8 do Chrome, o que o torna ideal para construir servidores rápidos, APIs e microsserviços com arquitetura orientada a eventos e não bloqueante, e é amplamente utilizado por grandes empresas como Netflix, Uber e PayPal. 
+Como funciona?
+Motor V8: Utiliza o mesmo motor JavaScript do Google Chrome para executar o código.
+Execução no Servidor: Permite que o JavaScript, antes restrito aos navegadores (frontend), seja usado para o backend (servidor).
+Assíncrono e Orientado a Eventos: Funciona com uma única thread (Event Loop) para lidar com muitas requisições simultâneas sem bloqueio, sendo eficiente para aplicações em tempo real e de alta performance. 
+
+P) O que é API?
+R: API (Interface de Programação de Aplicações) é um conjunto de regras e protocolos que permite que diferentes softwares se comuniquem e troquem dados, funcionando como uma "ponte" ou "contrato" entre eles, sem que um precise conhecer os detalhes internos do outro, possibilitando a integração de funcionalidades e a criação de novos serviços. Você usa APIs constantemente, sem perceber, como ao verificar a previsão do tempo no celular ou usar um login de rede social em outro app, ou ainda quando um site de viagens exibe mapas do Google Maps via API. 
+Como funciona?
+Solicitação e Resposta: Uma aplicação faz uma "solicitação" (um pedido) através da API para outra aplicação. A API, então, entrega a "resposta" (os dados ou a funcionalidade) de volta, seguindo um formato definido.
+Contrato: A API define esse "contrato" ou conjunto de regras sobre como as solicitações devem ser feitas e as respostas formatadas, como um garçom em um restaurante: você pede (solicita), o garçom (API) leva seu pedido (dados) para a cozinha (outro sistema) e traz o prato pronto (resposta). 
+Exemplos comuns
+Google Maps API: Permite que sites e apps incorporem mapas e serviços de localização.
+Redes Sociais (Facebook, Instagram): Permitem que outros aplicativos usem seus dados (com permissão) ou ofereçam login com suas contas, como o "Entrar com Facebook".
+Gateways de Pagamento (PayPal, Stripe): Permitem que lojas online processem pagamentos de forma segura. 
+Tipos de APIs
+Públicas (Open APIs): Disponíveis para qualquer desenvolvedor usar (ex: Google Maps, Twitter).
+Privadas (Internal APIs): Usadas dentro de uma mesma empresa para conectar seus próprios sistemas.
+De Parceiros (Partner APIs): Compartilhadas com parceiros específicos para integrações de negócios. 
+Em resumo, APIs são essenciais para a interconectividade digital, permitindo que softwares colaborem e ofereçam experiências mais ricas e integradas aos usuários. 
+
+P) O que é um protocolo em programação?
+R: Em programação, um protocolo é um conjunto de regras e padrões padronizados que governam como os dados são formatados, transmitidos e recebidos entre sistemas, garantindo que diferentes dispositivos e softwares possam se comunicar e entender uns aos outros na rede, como uma linguagem comum. Ele define a sintaxe, semântica e sincronização da comunicação, permitindo a troca de informações de forma eficiente e precisa, independentemente do hardware ou sistema operacional, como o HTTP para a web ou o TCP/IP para a internet. 
+Para que servem os protocolos:
+Padronização: Criam uma linguagem universal para a comunicação digital.
+Interoperabilidade: Permitem que dispositivos de fabricantes distintos conversem entre si (ex: seu celular e um servidor web).
+Organização: Estruturam o fluxo de dados, definindo formato, sequência e como lidar com erros. 
+Exemplos comuns de protocolos:
+HTTP (Hypertext Transfer Protocol): Base da web, para transferir páginas e dados entre navegadores e servidores.
+HTTPS: Versão segura do HTTP, com criptografia.
+TCP/IP (Transmission Control Protocol/Internet Protocol): Conjunto fundamental para a internet, controlando o envio e roteamento de pacotes de dados.
+FTP (File Transfer Protocol): Para transferência de arquivos.
+SMTP: Para envio de e-mails. 
+Analogia:
+Pense em protocolos como as regras de uma conversa: você sabe que precisa cumprimentar, esperar a vez de falar e usar palavras compreensíveis para que a outra pessoa entenda. Na computação, os protocolos fazem o mesmo pelos computadores, garantindo que uma solicitação (seu clique no link) seja enviada e recebida corretamente. 
+
+P) Qual é a diferença entre um site e uma API?
+R: Um site é uma interface visual para humanos, usando HTML/CSS/JS para mostrar conteúdo, enquanto uma API (Interface de Programação de Aplicações) é uma interface para máquinas se comunicarem, enviando e recebendo dados (como JSON/XML) de forma estruturada, permitindo que diferentes softwares troquem informações e funcionalidades sem uma interface gráfica, atuando como "blocos de construção" para serviços, conforme descrito em artigos do Nordic APIs e Engineering Brasil. 
+Site (Frontend):
+Propósito: Apresentar informações e permitir interação humana.
+Tecnologias: HTML, CSS, JavaScript.
+Como funciona: O navegador solicita a página, o servidor envia o código, e o navegador renderiza o visual (textos, imagens, botões).
+Exemplo: Navegar pelo Google Search ou ler um artigo em um blog. 
+API (Backend/Integração):
+Propósito: Permitir que softwares se conversem, acessem dados e executem funções.
+Tecnologias: Protocolos (HTTP/S) e formatos (JSON/XML), como em REST APIs.
+Como funciona: Um aplicativo faz uma requisição (ex: "me dê os dados do usuário X"), e a API retorna os dados ou uma confirmação de ação.
+Exemplo: Quando um app de clima mostra a previsão, ele usa uma API para buscar esses dados de um servidor, ou quando você faz login com sua conta do Google em outro site, ele usa a API do Google. 
+Principais Diferenças:
+Usuário: Site para humanos; API para softwares/aplicativos.
+Formato: Site é visual (HTML); API é dados (JSON, XML).
+Natureza: API é um contrato de comunicação; Site é a interface final.
+Dependência: Um site pode usar várias APIs (ex: para mapas, pagamentos), mas uma API não é um site. 
+Em resumo, o site é o que você vê e interage diretamente, enquanto a API é a "cozinha" por trás, que fornece os ingredientes e as ferramentas para que o site (e outros aplicativos) funcione. 

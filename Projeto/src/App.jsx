@@ -1,6 +1,6 @@
 //import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import './App.css'
+//import './App.css'
 import Home from './pages/Home/Home.jsx'
 import Login from './pages/Login/Login.jsx'
 import NovoUsuario from './pages/NovoUsuario/NovoUsuario.jsx'

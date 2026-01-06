@@ -1,4 +1,4 @@
-import './Login.css'
+//import './Login.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -38,12 +38,12 @@ function Login() {
                     </div>
 
                     <div>
-                        <button type="button" id="entrar-button" onClick={handleEntrar}>Entrar</button>
+                        <button type="button" className="botoes-agrupados" onClick={handleEntrar}>Entrar</button>
                     </div>
 
-                    <div id="novo-inicio">
-                        <Link to="/"><button type="button" id="pagina-inicial">Início</button></Link>
-                        <Link to="/Novo-Usuario"><button type="button" id="novo-usuario">Novo</button></Link>
+                    <div className="botoes-grupo">
+                        <Link to="/" className="botoes-agrupados">Início</Link>
+                        <Link to="/Novo-Usuario" className="botoes-agrupados">Novo</Link>
                     </div>
                 </form >
             </div >

@@ -1,8 +1,0 @@
-Conteúdo Complementar:
-
-- Youtube:
-	
-	HTML: https://www.youtube.com/playlist?list=PL2Fdisxwzt_cajoGVWTx44wM6Ht09QJ3A
-	CSS: https://www.youtube.com/playlist?list=PL2Fdisxwzt_f5C7Mv0kg1EAHhy2VJLf1c
-	JavaScript: https://www.youtube.com/playlist?list=PL2Fdisxwzt_d590u3uad46W-kHA0PTjjw
-	React: https://www.youtube.com/watch?v=hd2B7XQAFls
