@@ -34,8 +34,9 @@ function NovoUsuario() {
 
     return (
         <>
-            <form id="usuario-container" action="#">
-                <h1><span id="new">Novo</span> <span id="user">Usuário</span></h1>
+        <div id="novo-usuario-container">
+            <form action="#">
+                <h1><span id="new">Novo</span><span id="user">Usuário</span></h1>
 
                 <div className='novo-usuario-input'>
                     <label>Nome:
@@ -111,6 +112,7 @@ function NovoUsuario() {
                     <button type="button" onClick={handleCadastrar} className="botoes-agrupados">Cadastrar</button>
                 </div>
             </form>
+            </div>
         </>
     )
 }

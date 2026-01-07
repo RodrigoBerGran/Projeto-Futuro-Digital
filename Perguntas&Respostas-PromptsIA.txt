@@ -76,3 +76,80 @@ Formato: Site é visual (HTML); API é dados (JSON, XML).
 Natureza: API é um contrato de comunicação; Site é a interface final.
 Dependência: Um site pode usar várias APIs (ex: para mapas, pagamentos), mas uma API não é um site. 
 Em resumo, o site é o que você vê e interage diretamente, enquanto a API é a "cozinha" por trás, que fornece os ingredientes e as ferramentas para que o site (e outros aplicativos) funcione. 
+
+P) O que é um Hook no React?
+R: No React, um Hook (Gancho) é uma função especial que permite "enganchar" (conectar) funcionalidades do React, como estado (state) e ciclo de vida, em componentes funcionais, sem precisar usar classes, tornando o código mais limpo, modular e reutilizável. Eles foram introduzidos para simplificar o gerenciamento de estados e efeitos colaterais em componentes funcionais, com nomes que sempre começam com use (ex: useState, useEffect). 
+Para que servem os Hooks?
+Usar estado em componentes funcionais: useState permite que componentes funcionais gerenciem seus próprios dados.
+Lidar com efeitos colaterais: useEffect permite executar lógica após a renderização (como buscar dados, manipular DOM).
+Reutilizar lógica: Hooks personalizados (custom hooks) permitem extrair e compartilhar lógica de estado entre diferentes componentes.
+Melhorar a organização: Separam a lógica por funcionalidade, em vez de métodos de ciclo de vida, como em classes. 
+Regras dos Hooks
+Só em componentes funcionais: Devem ser chamados dentro de componentes funcionais ou outros Hooks.
+No nível superior: Não podem ser chamados dentro de loops, condicionais (if) ou funções aninhadas.
+Nomes: Devem começar com use (ex: useContext, useMemo). 
+Exemplos de Hooks Integrados
+useState: Para adicionar estado local.
+useEffect: Para efeitos colaterais.
+useContext: Para acessar o contexto do React.
+useMemo, useCallback: Para otimização de performance. 
+
+P) O que são componentes funcionais?
+R: Componentes funcionais são blocos de código reutilizáveis, geralmente funções JavaScript simples, que recebem dados (props) e retornam uma saída (como JSX em React) para construir interfaces de usuário, sendo mais concisos e leves, especialmente com a introdução dos Hooks que permitem gerenciar estado e ciclo de vida, algo antes exclusivo de componentes de classe, tornando-os a abordagem moderna e preferida para desenvolvimento. 
+Em Contexto de Desenvolvimento Web (React, Vue, etc.):
+Definição: São funções JavaScript que aceitam props como argumento e retornam elementos React (JSX).
+Simplicidade: Têm sintaxe mais limpa e direta, facilitando a leitura e manutenção do código.
+Poder com Hooks: Com useState, useEffect, e outros Hooks, podem gerenciar estado interno e efeitos colaterais, antes feitos por componentes de classe.
+Vantagens: Melhor desempenho, modularidade, e facilitam a reutilização de lógica com hooks personalizados. 
+Em Contexto Geral (Computação):
+Um componente funcional pode ser uma tarefa complexa que transforma dados de entrada em dados de saída, sendo um nível mais detalhado de funcionalidade dentro de um software. 
+Exemplo (React):
+javascript
+// Componente Funcional Simples
+function Saudacao(props) {
+  return <h1>Olá, {props.nome}!</h1>;
+}
+// Uso: <Saudacao nome="Mundo" />
+Este componente é uma função que recebe props (propriedades) e renderiza um elemento HTML (<h1>). 
+Em Resumo:
+Componentes funcionais são a forma moderna e eficiente de criar partes da interface, oferecendo simplicidade e poder para construir aplicações escaláveis e fáceis de manter, preenchendo a lacuna que antes existia com os componentes de classe. 
+
+P) O que é DOM no JavaScript?
+R: DOM (Document Object Model) em JavaScript é uma interface que representa a página HTML/XML como uma árvore de objetos, permitindo que o JavaScript acesse, manipule e modifique a estrutura, o conteúdo e o estilo do documento dinamicamente, tornando as páginas interativas e responsivas sem recarregar a página. Ele funciona como uma ponte entre o código JavaScript e o HTML/CSS do navegador, usando o objeto document como ponto de entrada para acessar os elementos. 
+Como funciona o DOM:
+Estrutura de Árvore: O navegador transforma o HTML em uma árvore de nós (nodes), onde cada tag, texto ou atributo é um nó. O elemento <html> é a raiz, e as tags aninhadas são seus filhos.
+Manipulação: Através de métodos no objeto document (como getElementById, querySelector, createElement), o JavaScript pode:
+Adicionar/Remover/Alterar elementos (tags, textos, atributos).
+Mudar estilos (CSS).
+Responder a eventos (cliques, rolagem).
+Exemplo Prático: Para mudar o texto de um <h1> (título) para "Olá, Mundo!", você usaria algo como: document.querySelector('h1').innerText = 'Olá, Mundo!';. 
+Por que é importante:
+Cria páginas web dinâmicas e interativas.
+Essencial para efeitos visuais, atualizações de conteúdo (como em redes sociais) e interações complexas.
+Permite construir interfaces de usuário (UI) ricas e responsivas. 
+
+P) Qual é a diferença entre um React Hook e uma Function JavaScript?
+R: Um React Hook é uma função JavaScript especializada que permite "conectar" funcionalidades do React, como estado e métodos de ciclo de vida, em componentes de função, enquanto uma função JavaScript padrão é uma unidade de código de propósito geral sem essa conexão inerente. 
+
+Propósito:
+- React Hook: Gerenciar estado, efeitos colaterais e outras funcionalidades do React dentro de componentes funcionais.
+- Função JavaScript Padrão: Executar qualquer lógica, cálculo ou tarefa de propósito geral.
+
+Uso:
+- React Hook: Só pode ser chamado no nível superior de componentes de função React ou outros Hooks personalizados.
+- Função JavaScript Padrão: Pode ser usado em qualquer lugar do código JavaScript (loops, condicionais, funções aninhadas, etc.).
+
+Regras:
+- React Hook: 	Deve seguir regras específicas, como começar com o prefixo "use" (ex: useState, useEffect) e não ser chamado condicionalmente.
+- Função JavaScript Padrão: Nenhuma regra de nomenclatura ou restrição de uso específica, além da sintaxe JS padrão.
+
+Acesso a recursos React:
+- React Hook: Tem acesso direto ao estado do componente, contexto e ciclo de vida.
+- Função JavaScript Padrão: Não tem acesso direto ao estado ou ciclo de vida do React. Servem como funções auxiliares para lógica pura e sem estado.
+
+Em resumo, todos os Hooks são funções JavaScript, mas com superpoderes e restrições específicas que os integram profundamente ao ecossistema do React para gerenciar o comportamento e os dados da interface do usuário. 
+
+P) 
+R: 
+
+
