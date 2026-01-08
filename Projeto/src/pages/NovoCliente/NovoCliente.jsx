@@ -1,4 +1,3 @@
-//import './NovoCliente.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -34,7 +33,6 @@ function NovoCliente() {
 
         localStorage.setItem('dadosCliente', JSON.stringify(clienteNovo));
     }
-
 
     return (
         <>
@@ -160,7 +158,7 @@ function NovoCliente() {
                     <option value="">Selecione o Consumo</option>
                     <option value="basico">1-300 kWh</option>
                     <option value="premium">301-1000 kWh</option>
-                    <option value="investor">1001-5000 kWh</option>
+                    <option value="investor">1001+ kWh</option>
                 </select>
 
                 <label>Conta de Energia (R$):

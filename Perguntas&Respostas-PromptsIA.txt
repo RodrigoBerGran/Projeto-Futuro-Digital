@@ -149,7 +149,18 @@ Acesso a recursos React:
 
 Em resumo, todos os Hooks são funções JavaScript, mas com superpoderes e restrições específicas que os integram profundamente ao ecossistema do React para gerenciar o comportamento e os dados da interface do usuário. 
 
-P) 
-R: 
+P) O que é fluxo de render?
+R: O "fluxo de render" (ou "render flow" em inglês) é o processo passo a passo que um navegador web segue para converter o código da sua aplicação (HTML, CSS e JavaScript) nos pixels que você vê na tela. Esse processo é fundamental para a performance e a aparência visual de uma página web. 
+O fluxo geralmente envolve as seguintes etapas principais:
+Processamento de HTML e CSS: O navegador analisa o HTML para construir a "árvore DOM" (Document Object Model) e o CSS para construir a "árvore CSSOM" (CSS Object Model).
+Construção da Árvore de Renderização (Render Tree): As árvores DOM e CSSOM são combinadas para criar a árvore de renderização. Esta árvore contém apenas os nós visíveis e seus estilos calculados.
+Layout (ou Reflow): O navegador calcula as dimensões e a posição exata de cada elemento visível na tela.
+Pintura (Painting): Os pixels de cada elemento são preenchidos nas suas posições e tamanhos calculados, desenhando o texto, cores, bordas, imagens, etc.
+Composição (Compositing): As diferentes camadas pintadas são combinadas na ordem correta para serem exibidas na tela, especialmente se a renderização for acelerada por hardware. 
+Entender esse fluxo ajuda os desenvolvedores a otimizar o desempenho, minimizando operações custosas como o reflow (re-cálculo do layout) excessivo. 
+
+P) O que é árvore DOM?
+R: cliques, etc.). 
+Em resumo: O DOM é a ponte entre o conteúdo estático de uma página e o código que a torna interativa, permitindo que desenvolvedores construam experiências ricas e dinâmicas na web. 
 
 
