@@ -112,8 +112,8 @@ h1 {
     gap: 6px;
 }
 
-#new,
-#user {
+.new,
+.person {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -124,12 +124,12 @@ h1 {
     text-align: center;
 }
 
-#new {
+.new {
     color: #107DC2;
     background-image: linear-gradient(#107DC2, #05317D 100%);
 }
 
-#user {
+.person {
     color: #69b91e;
     background-image: linear-gradient(#69b91e, #2d730f 100%);
 }
@@ -150,4 +150,15 @@ h1 {
     padding: 8px;
     width: 100%;
     box-sizing: border-box;
+}
+
+#NovoCliente > div {
+    display: flex;
+    gap: 15px;
+}
+
+#NovoCliente label {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }

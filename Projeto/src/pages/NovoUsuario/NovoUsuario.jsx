@@ -36,7 +36,7 @@ function NovoUsuario() {
         <>
         <div id="novo-usuario-container">
             <form action="#">
-                <h1><span id="new">Novo</span><span id="user">Usuário</span></h1>
+                <h1><span className="new">Novo</span><span className="person">Usuário</span></h1>
 
                 <div className='novo-usuario-input'>
                     <label>Nome:
