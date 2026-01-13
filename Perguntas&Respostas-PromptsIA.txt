@@ -163,4 +163,93 @@ P) O que é árvore DOM?
 R: cliques, etc.). 
 Em resumo: O DOM é a ponte entre o conteúdo estático de uma página e o código que a torna interativa, permitindo que desenvolvedores construam experiências ricas e dinâmicas na web. 
 
+P) O que é map no React?
+R: No React, map() é um método JavaScript usado para iterar sobre um array de dados e transformar cada item do array em um elemento JSX, como um componente ou tag HTML, retornando um novo array de elementos para renderização dinâmica de listas, como uma lista de produtos ou tarefas, sempre exigindo uma prop key única para cada item. 
+Como Funciona:
+Array: Você tem um array de dados (ex: ['Maçã', 'Banana', 'Laranja']).
+map(): Você chama array.map() e passa uma função de callback que será executada para cada item do array.
+Transformação: Dentro da função, você retorna o que quer que cada item se torne (ex: <li>{item}</li>).
+Novo Array: O map() cria um novo array com os elementos JSX gerados (ex: <li>Maçã</li>, <li>Banana</li>, <li>Laranja</li>).
+Renderização no JSX: Você insere {seuArray.map(...) } dentro das chaves {} do JSX para renderizar a lista. 
+
+jsx
+const frutas = ['Maçã', 'Banana', 'Laranja'];
+
+function ListaDeFrutas() {
+  return (
+    <ul>
+      {frutas.map((fruta, index) => (
+        <li key={index}>{fruta}</li> // key={index} é crucial!
+      ))}
+    </ul>
+  );
+}
+
+Por que é Importante no React:
+Renderização Dinâmica: Permite exibir listas de itens sem saber quantos serão.
+Eficiência: Evita loops for tradicionais dentro do JSX, sendo mais declarativo e legível.
+Performance: A propriedade key ajuda o React a identificar quais itens mudaram, adicionaram ou foram removidos, otimizando atualizações na UI. 
+Em resumo, map() é a forma padrão e eficiente em React de converter dados de um array em uma lista de elementos visuais. 
+
+P) O que é um método em JavaScript?
+R: Em JavaScript, um método é uma função que pertence a um objeto ou classe, definindo o comportamento ou as ações que esse objeto pode realizar, como console.log() ou array.push(), sendo fundamental para a programação orientada a objetos e a organização do código, permitindo que as funções manipulem os dados (propriedades) do próprio objeto através da palavra-chave this. 
+Pontos Chave:
+Função Associada: Um método é essencialmente uma função (bloco de código) que é armazenada como uma propriedade de um objeto.
+Ações do Objeto: Permitem que objetos "façam" coisas, ou seja, executem tarefas específicas, como "latir" para um objeto cachorro ou "somar" para um objeto calculadora.
+Sintaxe: Você o chama usando objeto.nomeDoMetodo(argumentos).
+Palavra-chave this: Métodos podem usar this para acessar e manipular outras propriedades do mesmo objeto.
+Exemplos: minhaString.toUpperCase(), meuArray.map(), ou um método personalizado meuObjeto.fazerAlgo(). 
+Diferença entre Função e Método:
+Função: Um bloco de código reutilizável, independente.
+Método: Uma função que está "anexada" a um objeto, agindo sobre ele. 
+Em resumo, se uma função age sobre um objeto, ela é um método; caso contrário, é apenas uma função. 
+
+P) O que são props no React?
+R: Props (propriedades) em React são dados passados de um componente pai para um componente filho, permitindo que componentes sejam dinâmicos, reutilizáveis e personalizáveis, funcionando como argumentos de funções para configurar a exibição ou comportamento do filho, sendo sempre somente leitura (imutáveis). Elas são essenciais para a comunicação unidirecional (de cima para baixo) e para tornar os componentes flexíveis. 
+Como funcionam
+Fluxo de Dados: Props fluem do pai para o filho, como atributos em HTML (ex: <Componente nome="João" />).
+Imutáveis (Somente Leitura): Um componente filho não pode modificar as props que recebe; se precisar de mudança, usa-se state (estado).
+Reutilização: Permitem criar um componente uma vez e usá-lo várias vezes com dados diferentes, como um componente de Card que exibe títulos e descrições variadas.
+Parâmetro: Em componentes funcionais, props é o primeiro argumento da função, sendo um objeto que contém todas as propriedades passadas. 
+
+Exemplo Prático:
+jsx
+// Componente Pai (App.js)
+function App() {
+  return <Saudacao nome="Maria" />; // Passando a prop 'nome'
+}
+
+// Componente Filho (Saudacao.js)
+function Saudacao(props) { // props será { nome: "Maria" }
+  return <p>Olá, {props.nome}!</p>; // Acessando a prop
+}
+
+Principais Características:
+Unidirecional: Pai para Filho.
+Imutável: Não pode ser alterado dentro do filho.
+Reutilizável: Componentes se tornam flexíveis. 
+
+P) O que é um argumento de função?
+R: Um argumento de função é um valor ou dado que você passa para uma função quando a chama, fornecendo a informação necessária para que ela execute sua tarefa, como números em uma soma ou texto para formatar; é o valor real que preenche os parâmetros (as "caixas" definidas na função) para realizar uma operação específica, permitindo que funções sejam reutilizáveis e flexíveis. 
+
+Analogia Simples
+Função: Um liquidificador (faz suco).
+Parâmetro (na definição): As entradas que o liquidificador espera (fruta, água, açúcar).
+Argumento (na chamada): As frutas, a água e o açúcar que você realmente coloca nele para fazer aquele suco específico. 
+Em Programação (Ex: Python)
+python
+def saudacao(nome): # 'nome' é um PARÂMETRO
+  print(f"Olá, {nome}!")
+
+saudacao("Maria") # "Maria" é um ARGUMENTO
+Parâmetro: nome (a variável na definição da função).
+Argumento: "Maria" (o valor passado ao chamar a função). 
+Por Que São Importantes?
+Generalização: Permitem que uma única função trabalhe com diferentes dados sem reescrever o código.
+Reutilização: Você define a lógica uma vez e a aplica diversas vezes com inputs diferentes.
+Flexibilidade: A função se torna uma ferramenta versátil para diversas situações, como em planilhas (Excel) ou linguagens de programação. 
+Terminologia
+Parâmetro: A variável definida na declaração da função (o "placeholder").
+Argumento: O valor real passado para o parâmetro quando a função é executada (o "valor atual"). 
+
 

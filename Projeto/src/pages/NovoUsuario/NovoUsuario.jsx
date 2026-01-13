@@ -19,7 +19,7 @@ function NovoUsuario() {
             return
         };
 
-        // 1. Tranformar os dados "inputados" em uma variável do tipo objeto JavaScript:
+        // 1. Tranformar os dados "inputados" em JSON:
         let usuarioNovo = {
             nome: nome,
             dataNascimento: dataNascimento,
