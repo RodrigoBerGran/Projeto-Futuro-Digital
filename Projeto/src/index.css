@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0px 0px 15px 15px rgba(200, 200, 200);
+    padding: 40px 30px;
+}
+
+#home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    flex-direction: column;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+a.botoes-agrupados {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(
+        rgba(15, 125, 195, 1) 0%,
+        rgba(5, 50, 125, 1) 100%
+    );
+}
+
+/* container para botões lado a lado */
+div.botoes-grupo {
+    display: flex;
+    gap: 20px;
+}
+
+.botoes-agrupados {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+}
+
+/* hover para ambos */
+button:hover,
+a.botoes-agrupados:hover {
+    background: linear-gradient(
+        rgba(105, 185, 30, 1) 0%,
+        rgb(45, 115, 15) 100%
+    );
+}
+
+input {
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#container-login,
+#novo-usuario-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 30px;
+    border-radius: 5px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 6px;
+}
+
+.new,
+.person {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2.4rem;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+}
+
+.new {
+    color: #107DC2;
+    background-image: linear-gradient(#107DC2, #05317D 100%);
+}
+
+.person {
+    color: #69b91e;
+    background-image: linear-gradient(#69b91e, #2d730f 100%);
+}
+
+.novo-usuario-input {
+    display: flex;
+    gap: 15px;              /* espaço entre os inputs */
+    width: 100%;
+}
+
+.novo-usuario-input label {
+    display: flex;
+    flex-direction: column; /* label em cima, input embaixo */
+    width: 100%;
+}
+
+.novo-usuario-input input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#NovoCliente > div {
+    display: flex;
+    gap: 15px;
+}
+
+#NovoCliente label {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
