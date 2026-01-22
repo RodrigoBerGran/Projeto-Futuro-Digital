@@ -10,17 +10,15 @@ function NovoUsuario() {
     const [senha, setSenha] = useState('')
     const [confirmarSenha, setConfirmarSenha] = useState('')
 
-    const handleCadastrar = () => {
-
-        // Lógica de cadastro:
-
+    // Lógica de cadastro:
+    const handleCadastrar = async () => {
         if (senha !== confirmarSenha) {
             alert("As senhas não coincidem!")
             return
         };
 
         // 1. Tranformar os dados "inputados" em JSON:
-        let usuarioNovo = {
+        const novoUsuario = {
             nome: nome,
             dataNascimento: dataNascimento,
             telefone: telefone,
@@ -28,14 +26,31 @@ function NovoUsuario() {
             senha: senha
         };
 
-        // 2. Armazenar localmente o objeto JavaScript e converter-lo para JSON:
-        localStorage.setItem('dadosUsuario', JSON.stringify(usuarioNovo));
+        // 2. Enviar os dados para a API (miragejs):
+        try {
+
+            const resposta = await fetch('/api/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(novoUsuario),
+            });
+
+            if (!resposta.ok) {
+                throw new Error("Erro ao cadastrar usuário.");
+            }
+
+            alert("Usuário cadastrado com sucesso!");
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
     return (
         <>
         <div id="novo-usuario-container">
-            <form action="#">
+            <form>
                 <h1><span className="new">Novo</span><span className="person">Usuário</span></h1>
 
                 <div className='novo-usuario-input'>

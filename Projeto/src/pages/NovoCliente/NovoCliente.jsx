@@ -14,9 +14,9 @@ function NovoCliente() {
     const [consumo, setConsumo] = useState('')
     const [conta, setConta] = useState('')
 
-    const handleCadastrar = () => {
+    const handleCadastrar = async () => {
 
-        let clienteNovo = {
+        const clienteNovo = {
             nome: nome,
             telefone: telefone,
             email: email,
@@ -29,7 +29,24 @@ function NovoCliente() {
             conta: conta
         };
 
-        localStorage.setItem('dadosCliente', JSON.stringify(clienteNovo));
+        try {
+
+            const resposta = await fetch('/api/clientes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(clienteNovo),
+            });
+
+            if (!resposta.ok) {
+                throw new Error("Erro ao cadastrar cliente.");
+            }
+
+            alert("Cliente cadastrado com sucesso!");
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
     return (

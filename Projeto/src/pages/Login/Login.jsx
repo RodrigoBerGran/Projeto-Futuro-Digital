@@ -7,7 +7,7 @@ function Login() {
     const [usuario, setUsuario] = useState('')
     const [senha, setSenha] = useState('')
 
-    const handleEntrar = () => {
+    const handleEntrar = async () => {
 
     }
 

@@ -8,7 +8,7 @@ function Clientes() {
 
     return (
         <>
-            <h1>Clients</h1>
+            <h1>Clientes</h1>
             <input type="search" placeholder="Buscar Cliente" />
             <nav>
                 <Link to="/Novo-Cliente">Novo Cliente</Link><br />
