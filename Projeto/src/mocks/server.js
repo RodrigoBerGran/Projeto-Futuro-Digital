@@ -45,6 +45,43 @@ export function makeServer() {
                 return schema.usuarios.create(attrs);
             });
 
+            this.put('/usuarios/:id', (schema, request) => {
+                let id = request.params.id;
+                let data = JSON.parse(request.requestBody);
+
+                let usuario = schema.usuarios.find(id);
+
+                if (!usuario) {
+                    return new Response(
+                        404,
+                        {},
+                        { error: 'Usuário não encontrado.' }
+                    )
+                }
+
+                usuario.update(data);
+
+                return usuario;
+
+            });
+
+            this.delete('/usuarios/:id', (schema, request) => {
+                let id = request.params.id;
+                let usuario = schema.usuarios.find(id);
+
+                if (!usuario) {
+                    return new Response(
+                        404,
+                        {},
+                        { error: 'Usuário não encontrado.' }
+                    )
+                }
+
+                usuario.destroy();
+
+                return new Response(204);
+            });
+
             this.get('/clientes', (schema) => {
                 return schema.clientes.all();
             });
@@ -52,6 +89,43 @@ export function makeServer() {
             this.post('/clientes', (schema, request) => {
                 let attrs = JSON.parse(request.requestBody);
                 return schema.clientes.create(attrs);
+            });
+
+            this.put('/clientes/:id', (schema, request) => {
+                let id = request.params.id;
+                let data = JSON.parse(request.requestBody);
+
+                let cliente = schema.clientes.find(id);
+
+                if (!cliente) {
+                    return new Response(
+                        404,
+                        {},
+                        { error: 'Cliente não encontrado.' }
+                    )
+                }
+
+                cliente.update(data);
+
+                return cliente;
+
+            });
+
+            this.delete('/clientes/:id', (schema, request) => {
+                let id = request.params.id;
+                let cliente = schema.clientes.find(id);
+
+                if (!cliente) {
+                    return new Response(
+                        404,
+                        {},
+                        { error: 'Cliente não encontrado.' }
+                    )
+                }
+
+                cliente.destroy();
+
+                return new Response(204);
             });
         },
     });
