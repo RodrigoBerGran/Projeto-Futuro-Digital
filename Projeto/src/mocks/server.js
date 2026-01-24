@@ -1,4 +1,4 @@
-import { createServer, Model } from 'miragejs';
+import { createServer, Model, Response } from 'miragejs';
 
 export function makeServer() {
     return createServer({
@@ -8,6 +8,7 @@ export function makeServer() {
         },
 
         seeds(server) {
+
             server.create('usuario', {
                 nome: 'Usuário Teste',
                 dataNascimento: '1995-01-01',
@@ -15,9 +16,7 @@ export function makeServer() {
                 email: 'usuario@email.com',
                 senha: '123456'
             })
-        },
 
-        seeds(server) {
             server.create('cliente', {
                 nome: 'Cliente Teste',
                 telefone: '11988887777',
@@ -42,8 +41,11 @@ export function makeServer() {
 
             this.post('/usuarios', (schema, request) => {
                 let attrs = JSON.parse(request.requestBody);
-                return schema.usuarios.create(attrs);
+                const usuario = schema.usuarios.create(attrs);
+
+                return { usuario };
             });
+
 
             this.put('/usuarios/:id', (schema, request) => {
                 let id = request.params.id;
@@ -52,17 +54,12 @@ export function makeServer() {
                 let usuario = schema.usuarios.find(id);
 
                 if (!usuario) {
-                    return new Response(
-                        404,
-                        {},
-                        { error: 'Usuário não encontrado.' }
-                    )
+                    return new Response(404, {}, { error: 'Usuário não encontrado.' });
                 }
 
                 usuario.update(data);
 
-                return usuario;
-
+                return { usuario };
             });
 
             this.delete('/usuarios/:id', (schema, request) => {
@@ -87,28 +84,25 @@ export function makeServer() {
             });
 
             this.post('/clientes', (schema, request) => {
-                let attrs = JSON.parse(request.requestBody);
-                return schema.clientes.create(attrs);
+                const attrs = JSON.parse(request.requestBody);
+                const cliente = schema.clientes.create(attrs);
+
+                return { cliente };
             });
 
             this.put('/clientes/:id', (schema, request) => {
-                let id = request.params.id;
-                let data = JSON.parse(request.requestBody);
+                const id = request.params.id;
+                const data = JSON.parse(request.requestBody);
 
-                let cliente = schema.clientes.find(id);
+                const cliente = schema.clientes.find(id);
 
                 if (!cliente) {
-                    return new Response(
-                        404,
-                        {},
-                        { error: 'Cliente não encontrado.' }
-                    )
+                    return new Response(404, {}, { error: 'Cliente não encontrado.' });
                 }
 
                 cliente.update(data);
 
-                return cliente;
-
+                return { cliente };
             });
 
             this.delete('/clientes/:id', (schema, request) => {
