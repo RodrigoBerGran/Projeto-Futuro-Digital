@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ClientesAPI } from '../services/ClientesAPI';
+import { ClientesAPI } from '../services/api/ClientesAPI';
 
 function NovoCliente() {
 

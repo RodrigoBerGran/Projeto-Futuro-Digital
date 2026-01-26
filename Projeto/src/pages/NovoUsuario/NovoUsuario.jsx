@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UsuariosAPI } from '../services/UsuariosAPI';
+import { UsuariosAPI } from '../services/api/UsuariosAPI';
 
 function NovoUsuario() {
 
