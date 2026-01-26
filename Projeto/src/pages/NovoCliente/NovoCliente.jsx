@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ClientesAPI } from '../services/ClientesAPI';
 
 function NovoCliente() {
 
@@ -14,44 +15,54 @@ function NovoCliente() {
     const [consumo, setConsumo] = useState('')
     const [conta, setConta] = useState('')
 
-    const handleCadastrar = async () => {
+    const handleCadastrar = async (e) => {
+        e.preventDefault()
+
+        if (!nome || !telefone) {
+            alert('Preencha todos os campos obrigatórios')
+            return
+        }
 
         const clienteNovo = {
-            nome: nome,
-            telefone: telefone,
-            email: email,
-            rua: rua,
-            numero: numero,
-            cep: cep,
-            bairro: bairro,
-            cidade: cidade,
-            consumo: consumo,
-            conta: conta
-        };
+            nome,
+            telefone,
+            email,
+            rua,
+            numero,
+            cep,
+            bairro,
+            cidade,
+            consumo,
+            conta
+        }
 
         try {
+            await ClientesAPI.create(clienteNovo)
+            alert('Cliente cadastrado com sucesso!')
 
-            const resposta = await fetch('/api/clientes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(clienteNovo),
-            });
+            //limpar formulário
+            setNome('')
+            setTelefone('')
+            setEmail('')
+            setRua('')
+            setNumero('')
+            setCep('')
+            setBairro('')
+            setCidade('')
+            setConsumo('')
+            setConta('')
 
-            if (!resposta.ok) {
-                throw new Error("Erro ao cadastrar cliente.");
-            }
-
-            alert("Cliente cadastrado com sucesso!");
         } catch (error) {
-            alert(error.message);
+            alert(
+                error.response?.data?.error ||
+                'Erro ao cadastrar cliente'
+            )
         }
     }
 
     return (
         <>
-            <form id="NovoCliente">
+            <form id="NovoCliente" onSubmit={handleCadastrar}>
                 <h1><span className="new">Novo</span><span className="person">Cliente</span></h1>
                 <div>
                     <label>Nome:
@@ -68,6 +79,7 @@ function NovoCliente() {
                         <input
                             required
                             type="tel"
+                            inputMode="numeric"
                             name="telefone"
                             placeholder="(00) 0 0000-0000"
                             value={telefone}
@@ -98,7 +110,8 @@ function NovoCliente() {
                 <div>
                     <label>Número:
                         <input
-                            type="number"
+                            type="text"
+                            inputMode="numeric"
                             name="numero"
                             placeholder="1234"
                             value={numero}
@@ -107,7 +120,8 @@ function NovoCliente() {
 
                     <label>CEP:
                         <input
-                            type="number"
+                            type="text"
+                            inputMode="numeric"
                             name="cep"
                             placeholder="99999-999"
                             value={cep}
@@ -157,7 +171,7 @@ function NovoCliente() {
 
                 <div className='botoes-grupo'>
                     <Link to="/" className="botoes-agrupados">Início</Link>
-                    <button type="button" className="botoes-agrupados" onClick={handleCadastrar}>Cadastrar</button>
+                    <button type="submit" className="botoes-agrupados">Cadastrar</button>
                 </div>
             </form>
         </>
