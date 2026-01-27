@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SolarTech_Logo from '../../assets/SolarTech_Logo.png'
+import SolarTech_Logo from '../assets/SolarTech_Logo.png'
 
 function Home() {
     return (
