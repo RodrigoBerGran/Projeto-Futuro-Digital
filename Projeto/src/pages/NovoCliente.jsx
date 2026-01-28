@@ -14,6 +14,8 @@ function NovoCliente() {
     const [cidade, setCidade] = useState('')
     const [consumo, setConsumo] = useState('')
     const [conta, setConta] = useState('')
+    const [mensagemSucesso, setMensagemSucesso] = useState('')
+    const [mensagemErro, setMensagemErro] = useState('')
 
     const handleCadastrar = async (e) => {
         e.preventDefault()

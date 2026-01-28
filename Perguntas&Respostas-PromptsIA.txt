@@ -252,4 +252,62 @@ Terminologia
 Parâmetro: A variável definida na declaração da função (o "placeholder").
 Argumento: O valor real passado para o parâmetro quando a função é executada (o "valor atual"). 
 
+P) Qual é a diferença entre um hook e um componente no react?
+R) A principal diferença é que componentes retornam JSX para renderizar a interface de usuário (UI), enquanto hooks são funções JavaScript que permitem "conectar" recursos de estado e ciclo de vida a componentes funcionais sem retornar JSX. Componentes estruturam a visualização, enquanto hooks reutilizam lógica e gerenciam dados. 
+Principais Diferenças:
+Componentes (ex: App.js): São peças de UI (botões, cards, telas) que retornam HTML/JSX para a tela.
+Hooks (ex: useState, useEffect): São funções especiais usadas dentro de componentes funcionais para adicionar estado (ex: {Link: "useState" https://react.dev/reference/react/hooks} ) ou efeitos colaterais (ex: {Link: "useEffect" https://pt-br.legacy.reactjs.org/docs/hooks-effect.html} ).
+Reutilização: Hooks permitem extrair lógica de estado para reutilização (Custom Hooks), enquanto componentes reutilizam a UI.
+Regra de Uso: Hooks só podem ser chamados dentro de componentes funcionais ou de outros hooks customizados, nunca dentro de classes. 
+Resumo: O componente define o que aparece na tela; o hook define como a funcionalidade daquele componente funciona. 
 
+P) O que é o react-router-dom?
+R) React Router DOM é a biblioteca padrão para gerenciar rotas em aplicações React, permitindo criar navegação entre diferentes "páginas" (componentes) sem recarregar a página inteira, o que resulta em uma experiência de usuário mais fluida, típica de Single Page Applications (SPAs). Ela mapeia URLs para componentes específicos, possibilitando rotas dinâmicas, aninhadas e o uso de hooks para acesso a informações de rota e redirecionamentos.
+Para que serve:
+Navegação sem recarregar: Altera o conteúdo da página conforme a URL, sem fazer novas requisições ao servidor.
+Roteamento Dinâmico: Permite URLs com parâmetros (ex: /produtos/123).
+Rotas Aninhadas: Estrutura rotas dentro de outras (ex: /dashboard/configuracoes).
+Hooks: Fornece ferramentas como useNavigate para redirecionar e useParams para pegar dados da URL.
+Como funciona (conceitos principais):
+BrowserRouter (ou outros roteadores): Envolve seu aplicativo para habilitar o roteamento baseado no DOM do navegador.
+Routes e Route: Define os caminhos (URLs) e os componentes que devem ser renderizados para cada um.
+Link (ou NavLink): Componente para criar links clicáveis que navegam entre as rotas, sem recarregar a página.
+
+P) O que é o 'Link' no react-router-dom?
+R) O <Link> no react-router-dom é um componente essencial para navegação em aplicações React (SPA - Single Page Applications). Ele substitui a tag HTML tradicional <a>, permitindo alterar a URL e renderizar novos componentes sem recarregar a página inteira, tornando a navegação mais rápida e fluida. 
+Principais características:
+Evita Recarga: Diferente do <a>, o Link impede o comportamento padrão do navegador de recarregar a página, usando o histórico do navegador para atualizar apenas o conteúdo necessário.
+Propriedade to: Substitui o href, definindo o destino da rota, por exemplo: <Link to="/sobre">Sobre</Link>.
+Acessibilidade: Renderiza um elemento <a> real, mantendo funcionalidades nativas como clicar com o botão direito para abrir em nova aba.
+Navegação Interna: É ideal para links dentro do próprio site (rotas internas). 
+
+P) O que é => no JavaScript?
+R) O símbolo => no JavaScript representa uma Arrow Function (função de seta), introduzida no ES6. Ela oferece uma sintaxe mais concisa e curta para criar funções anônimas, eliminando a necessidade da palavra-chave function e, muitas vezes, das chaves {} e return. 
+Características principais:
+Sintaxe Reduzida: (param1, param2) => { ... }.
+Retorno Implícito: Se a função tiver apenas uma linha, o valor é retornado automaticamente: const dobro = x => x * 2;.
+Contexto this Léxico: Diferente de funções normais, arrow functions não possuem seu próprio this. Elas herdam o this do escopo onde foram criadas, sendo ideais para callbacks. 
+
+Exemplos:
+
+javascript
+// Função tradicional
+var soma = function(a, b) {
+  return a + b;
+};
+
+// Arrow Function
+const soma = (a, b) => a + b;
+
+As arrow functions tornaram-se o padrão para código JavaScript moderno, especialmente em manipuladores de eventos e métodos de arrays (como .map() ou .filter()). 
+
+P) O que é um parâmetro em JavaScript?
+R) Um parâmetro no JavaScript é uma variável definida na declaração de uma função, agindo como um espaço reservado (placeholder) para receber dados necessários ao seu funcionamento. Parâmetros indicam quais informações a função precisa, permitindo que ela processe diferentes valores sem alterar sua estrutura interna. 
+Principais Conceitos:
+Definição (Parâmetro): Nome listado na definição da função: function saudacao(nome) { ... }.
+Chamada (Argumento): O valor real enviado para a função ao chamá-la: saudacao("Maria").
+Comportamento: Dentro da função, o parâmetro se comporta como uma variável local.
+Tipos de Parâmetros:
+Default (Padrão): Permitem inicializar com um valor padrão caso nenhum argumento seja passado (function(a = 1)) MDN Web Docs.
+Rest: Permitem representar um número indefinido de argumentos como um array (function(...args)) MDN Web Docs. 
+Se nenhum valor for passado, o parâmetro assume o valor undefined por padrão. 
