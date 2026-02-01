@@ -21,8 +21,12 @@ function NovoUsuario() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [confirmarSenha, setConfirmarSenha] = useState('')
+    // estes sáo iguais ao explicado acima, poiis tambem são "inputs" do formulário
+
+    //variáveis para armazenar as mensagens de sucesso e erro
     const [mensagemSucesso, setMensagemSucesso] = useState('')
     const [mensagemErro, setMensagemErro] = useState('')
+    //neste caso faz com que as mensagens de erro/sucesso não apareçam inicialmente, pois estão vazias
 
     //função assincrona colocada dentro da constante "handleCadastrar" para lidar com o evento de cadastro do novo usuário (Clicar no botão "cadastrar")
     const handleCadastrar = async (e) => {
@@ -67,7 +71,7 @@ function NovoUsuario() {
             //"await": palavra-chave utilizada para pausar a execução de uma função async até que uma Promise seja resolvida (ou rejeitada), retornando o valor final dela
             //".create": método do serviço "UsuariosAPI" que envia uma requisição para criar um novo usuário no back-end, utilizando os dados do objeto "novoUsuario"
 
-            //limpar o formulário e exibir a mensagem de sucesso
+            //limpar os campos do formulário e exibir a mensagem de sucesso
             setNome('')
             setDataNascimento('')
             setTelefone('')
@@ -75,7 +79,7 @@ function NovoUsuario() {
             setSenha('')
             setConfirmarSenha('')
             setMensagemErro('')
-            setMensagemSucesso('Usuário cadastrado com sucesso!') //define a mensagem de sucesso após o cadastro
+            setMensagemSucesso('Usuário cadastrado com sucesso!') //define (set) a mensagem de sucesso após o cadastro
 
         } catch (error) { //"catch": capturar erros que possam ocorrer durante o processo de cadastro
             setMensagemSucesso('')
@@ -83,21 +87,40 @@ function NovoUsuario() {
                 error.response?.data?.error || //define a mensagem de erro recebida do back-end, se houver
                 'Erro ao cadastrar usuário'
             ) //define a mensagem de erro caso ocorra algum problema no cadastro
-            //"error": 
+            //"error": objeto nativo do JS que contém informações sobre o erro ocorrido
         }
     }
 
+    //"return": retorna o JSX que define a estrutura visual da página
     return (
-        <>
-            <div id="novo-usuario-container">
+        <> {/* "<>": abertura do 'fragmento', permite agrupar múltiplos elementos JSX sem criar um elemento HTML extra */}
+
+            <div id="novo-usuario-container"> {/* "div": cria uma "caixa" para os elementos */}
+                { /* "elemento": estrutura básica de um documento, ex: <TagDeAbertura>Conteúdo do Elemento</TagDeFechamento>. É a estrutura básica do HTML */ }
+
                 <form onSubmit={handleCadastrar}>
+                    {/* "<form>": abertura da tag do formulário */}
+                    {/* "onSubmit={}": ativa o evento de enviar o formulário */}
+                    {/* "handleCadastrar": nome da função criada lá em cima  */}
 
                     <h1><span className="new">Novo</span><span className="person">Usuário</span></h1>
+                    {/* "<h1>": tag do título principal, pode ir até o 'h6" */}
+                    {/* "<span>": tag genérica para agrupar elementos dentro de outros elementos HTML sem quebrar a linha */}
+                    {/* "className=": define a qual classe CSS o elemento pertence  */}
 
+                    {/* função para exibir na tela a mensagem de sucesso */}
                     {mensagemSucesso && (
+                        // "mensagemSucesso": nome da variável criada lá no inicio que armazenará a mensagem (exibição condicional da mensagem) de sucesso "setada" logo acima
+                        // "&&": operador lógico "e/and" (conjunção)
+                        // se for colocado/setado um valor diferente do estado inicial da variável "mensagemSucesso" (que é vazio), a mensagem de sucesso definida no 'useState' logo acima será exibida
+
                         <p className="mensagem-sucesso">{mensagemSucesso}</p>
+                        // "<p>": tag que define um parágrafo
+                        // transforma a mensagem de erro definida logo acima em um paragráfo
+
                     )}
 
+                    {/* função para exibir na tela a mensagem de erro */}
                     {mensagemErro && (
                         <p className="mensagem-erro">{mensagemErro}</p>
                     )}
@@ -177,7 +200,7 @@ function NovoUsuario() {
                     </div>
                 </form>
             </div>
-        </>
+        </> /* "</>": fechamento do 'fragmento' */
     )
 }
 export default NovoUsuario
