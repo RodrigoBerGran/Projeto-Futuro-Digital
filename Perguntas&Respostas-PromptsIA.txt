@@ -311,3 +311,19 @@ Tipos de Parâmetros:
 Default (Padrão): Permitem inicializar com um valor padrão caso nenhum argumento seja passado (function(a = 1)) MDN Web Docs.
 Rest: Permitem representar um número indefinido de argumentos como um array (function(...args)) MDN Web Docs. 
 Se nenhum valor for passado, o parâmetro assume o valor undefined por padrão. 
+
+P) O que é o "e" no react?
+R) O "e" (geralmente escrito como e ou event) no React representa o objeto de evento sintético (SyntheticEvent) do JavaScript. Ele é passado automaticamente como argumento em manipuladores de eventos (como onClick ou onChange) para acessar informações da interação, como o valor de um input (e.target.value) ou prevenir comportamentos padrão (e.preventDefault()). 
+Principais detalhes sobre o objeto de evento (e) no React:
+SyntheticEvent: O React embrulha o evento nativo do navegador em um SyntheticEvent. Isso garante que o evento funcione exatamente da mesma forma em diferentes navegadores.
+Acesso a dados: e.target refere-se ao elemento DOM que disparou o evento, permitindo ler propriedades, principalmente em formulários (ex: e.target.value).
+Controle de Comportamento: Utilizado para prevenir o envio automático de formulários ou a recarga da página usando e.preventDefault().
+
+Exemplo Prático:
+javascript
+function handleChange(e) {
+  console.log(e.target.value); // Obtém o valor digitado
+}
+<input type="text" onChange={handleChange} />
+ 
+Em resumo, e é a forma padrão do React para gerenciar interações do usuário de maneira eficiente e compatível entre navegadores. 

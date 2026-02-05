@@ -126,20 +126,22 @@ function NovoUsuario() {
                     )}
 
                     <div className='novo-usuario-input'>
-                        <label>Nome:
-                            <input
-                                required
-                                type="text"
-                                name="nome"
-                                id="usuario-nome"
-                                placeholder="Nome de Usuário"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                        <label>Nome: {/* "<label>": dá o >nome< ao input, e deixa o conteúdo inteiro 'clicável', também auxilia na acessibilidade */}
+                            <input // "<input">: on de o usuário insere dados
+                                required // "required": atributo que tona o campo obrigatório
+                                type="text" // "type=": define o tipo de dado que deve ser inserido no input, neste caso, texto (string)
+                                name="nome" // "name=: define o nome do "input", usado para identificar o campo no envio do formulário
+                                id="usuario-nome" // "id=": define o identificado único do campo
+                                placeholder="Nome de Usuário" // "placeholder=": define o texto de exemplo que aparece dentro do campo
+                                value={nome} // "value={}": vincula o valor deste input à váriavel de estado "nome" criado lá no ínicio
+                                onChange={(e) => setNome(e.target.value)} // "onChange={}": evento que é disparado quando o valor do input muda
+                                // "(e)=>{}": função arrow que recebe o evento "e" como parâmetro
+                                // "setNome(e.target.value)": chama a função "setNome" para atualizar o estado da variável "nome" com o novo valor digitado no input
                             /></label>
 
                         <label>Data de Nascimento:
                             <input
-                                type="date"
+                                type="date" // tipo de dado: data
                                 name="dataNascimento"
                                 id="usuario-nascimento"
                                 placeholder='dd/mm/aaaa'
@@ -151,7 +153,7 @@ function NovoUsuario() {
                     <div className='novo-usuario-input'>
                         <label>Telefone:
                             <input
-                                type="tel"
+                                type="tel" //tipo de dado: telefone
                                 name="telefone"
                                 id="usuario-telefone"
                                 placeholder="(00) 0 0000-0000"
@@ -162,7 +164,7 @@ function NovoUsuario() {
                         <label>E-mail:
                             <input
                                 type="email"
-                                name="email"
+                                name="email" //tipo de dado: e-mail
                                 id="usuario-email"
                                 placeholder='nome@exemplo.com'
                                 value={email}
@@ -174,7 +176,7 @@ function NovoUsuario() {
                         <label>Senha:
                             <input
                                 required
-                                type="password"
+                                type="password" //tipo de dado: senha (oculta os caracteres digitados)
                                 name="senha"
                                 id="usuario-senha"
                                 placeholder="Sua Senha"
@@ -195,12 +197,16 @@ function NovoUsuario() {
                     </div>
 
                     <div className='botoes-grupo'>
-                        <Link to="/" className="botoes-agrupados">Início</Link>
+                        <Link to="/" className="botoes-agrupados">Início</Link> {/* Componente "Link" que redireciona para a página inicial ("/") */}
                         <button type="submit" onClick={handleCadastrar} className="botoes-agrupados">Cadastrar</button>
+                        {/* "<button>": cria um botão clicável */}
+                        {/* "type="submit"": define o tipo do botão como "submit", que envia o formulário */}
+                        {/* "onClick={}": evento que é disparado quando o botão é clicado */}
+                        {/* "handleCadastrar": função criada lá em cima que lida com o cadastro do novo usuário */}
                     </div>
                 </form>
             </div>
         </> /* "</>": fechamento do 'fragmento' */
     )
 }
-export default NovoUsuario
+export default NovoUsuario //exportar o componente "NovoUsuario" que pode ser utilizado em outras partes do aplicativo
