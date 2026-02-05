@@ -1,5 +1,5 @@
-// Importar o 'hook' "useState" da biblioteca "react"
-import { useState } from 'react'
+// Importar o 'hook' "useState" e "useEffect" da biblioteca "react"
+import { useState, useEffect } from 'react'
 
 // importar o componente "Link" da biblioteca "react-router-dom"
 import { Link } from 'react-router-dom'
@@ -28,6 +28,19 @@ function NovoUsuario() {
     const [mensagemErro, setMensagemErro] = useState('')
     //neste caso faz com que as mensagens de erro/sucesso não apareçam inicialmente, pois estão vazias
 
+    //explicações pendentes
+    useEffect(() => {
+        if (mensagemErro || mensagemSucesso) {
+            const timer = setTimeout(() => {
+                setMensagemErro('')
+                setMensagemSucesso('')
+            }, 3000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [mensagemErro, mensagemSucesso])
+
+
     //função assincrona colocada dentro da constante "handleCadastrar" para lidar com o evento de cadastro do novo usuário (Clicar no botão "cadastrar")
     const handleCadastrar = async (e) => {
         e.preventDefault()
@@ -42,7 +55,8 @@ function NovoUsuario() {
         setMensagemErro('')
 
         //validação simples dos campos obrigatórios
-        if (!nome || !email || !senha) {
+        if (!nome || !telefone || !senha) {
+            setMensagemErro('Erro: Preencher os campos obrigatórios.')
             return
             //"if": estrutura condicional (ex: "se (tal, coisa, acontece) {faça isso}")"}
             //"!": operador lógico "não" (negação)
@@ -51,6 +65,7 @@ function NovoUsuario() {
         }
 
         if (senha !== confirmarSenha) {
+            setMensagemErro('Erro: As senhas não coincidem.')
             return
             //"==": operador de igualdade ampla (compara valores, ignorando tipos de dado)
         }
@@ -96,12 +111,13 @@ function NovoUsuario() {
         <> {/* "<>": abertura do 'fragmento', permite agrupar múltiplos elementos JSX sem criar um elemento HTML extra */}
 
             <div id="novo-usuario-container"> {/* "div": cria uma "caixa" para os elementos */}
-                { /* "elemento": estrutura básica de um documento, ex: <TagDeAbertura>Conteúdo do Elemento</TagDeFechamento>. É a estrutura básica do HTML */ }
+                { /* "elemento": estrutura básica de um documento, ex: <TagDeAbertura>Conteúdo do Elemento</TagDeFechamento>. É a estrutura básica do HTML */}
 
-                <form onSubmit={handleCadastrar}>
+                <form onSubmit={handleCadastrar} noValidate>
                     {/* "<form>": abertura da tag do formulário */}
                     {/* "onSubmit={}": ativa o evento de enviar o formulário */}
                     {/* "handleCadastrar": nome da função criada lá em cima  */}
+                    {/* "noValidate": desativa a validação padrão do navegador, permitindo a validação personalizada */}
 
                     <h1><span className="new">Novo</span><span className="person">Usuário</span></h1>
                     {/* "<h1>": tag do título principal, pode ir até o 'h6" */}
@@ -126,7 +142,7 @@ function NovoUsuario() {
                     )}
 
                     <div className='novo-usuario-input'>
-                        <label>Nome: {/* "<label>": dá o >nome< ao input, e deixa o conteúdo inteiro 'clicável', também auxilia na acessibilidade */}
+                        <label title="Campo Obrigatório">Nome* {/* "<label>": dá o >nome< ao input, e deixa o conteúdo inteiro 'clicável', também auxilia na acessibilidade */}
                             <input // "<input">: on de o usuário insere dados
                                 required // "required": atributo que tona o campo obrigatório
                                 type="text" // "type=": define o tipo de dado que deve ser inserido no input, neste caso, texto (string)
@@ -135,11 +151,11 @@ function NovoUsuario() {
                                 placeholder="Nome de Usuário" // "placeholder=": define o texto de exemplo que aparece dentro do campo
                                 value={nome} // "value={}": vincula o valor deste input à váriavel de estado "nome" criado lá no ínicio
                                 onChange={(e) => setNome(e.target.value)} // "onChange={}": evento que é disparado quando o valor do input muda
-                                // "(e)=>{}": função arrow que recebe o evento "e" como parâmetro
-                                // "setNome(e.target.value)": chama a função "setNome" para atualizar o estado da variável "nome" com o novo valor digitado no input
+                            // "(e)=>{}": função arrow que recebe o evento "e" como parâmetro
+                            // "setNome(e.target.value)": chama a função "setNome" para atualizar o estado da variável "nome" com o novo valor digitado no input
                             /></label>
 
-                        <label>Data de Nascimento:
+                        <label>Data de Nascimento
                             <input
                                 type="date" // tipo de dado: data
                                 name="dataNascimento"
@@ -151,8 +167,9 @@ function NovoUsuario() {
                     </div>
 
                     <div className='novo-usuario-input'>
-                        <label>Telefone:
+                        <label title="Campo Obrigatório">Telefone*
                             <input
+                                required
                                 type="tel" //tipo de dado: telefone
                                 name="telefone"
                                 id="usuario-telefone"
@@ -161,7 +178,7 @@ function NovoUsuario() {
                                 onChange={(e) => setTelefone(e.target.value)}
                             /></label>
 
-                        <label>E-mail:
+                        <label>E-mail
                             <input
                                 type="email"
                                 name="email" //tipo de dado: e-mail
@@ -173,7 +190,7 @@ function NovoUsuario() {
                     </div>
 
                     <div className='novo-usuario-input'>
-                        <label>Senha:
+                        <label title="Campo Obrigatório">Senha*
                             <input
                                 required
                                 type="password" //tipo de dado: senha (oculta os caracteres digitados)
@@ -184,7 +201,7 @@ function NovoUsuario() {
                                 onChange={(e) => setSenha(e.target.value)}
                             /></label>
 
-                        <label>Confirmar Senha:
+                        <label title="Campo Obrigatório">Confirmar Senha*
                             <input
                                 required
                                 type="password"
@@ -198,11 +215,9 @@ function NovoUsuario() {
 
                     <div className='botoes-grupo'>
                         <Link to="/" className="botoes-agrupados">Início</Link> {/* Componente "Link" que redireciona para a página inicial ("/") */}
-                        <button type="submit" onClick={handleCadastrar} className="botoes-agrupados">Cadastrar</button>
+                        <button type="submit" className="botoes-agrupados">Cadastrar</button>
                         {/* "<button>": cria um botão clicável */}
                         {/* "type="submit"": define o tipo do botão como "submit", que envia o formulário */}
-                        {/* "onClick={}": evento que é disparado quando o botão é clicado */}
-                        {/* "handleCadastrar": função criada lá em cima que lida com o cadastro do novo usuário */}
                     </div>
                 </form>
             </div>
