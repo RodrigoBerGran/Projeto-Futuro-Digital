@@ -54,7 +54,7 @@ export function makeServer() {
                 let usuario = schema.usuarios.find(id);
 
                 if (!usuario) {
-                    return new Response(404, {}, { error: 'Usuário não encontrado.' });
+                    return new Response(404, {}, { error: 'Erro: Usuário não encontrado.' });
                 }
 
                 usuario.update(data);
@@ -70,7 +70,7 @@ export function makeServer() {
                     return new Response(
                         404,
                         {},
-                        { error: 'Usuário não encontrado.' }
+                        { error: 'Erro: Usuário não encontrado.' }
                     )
                 }
 
@@ -78,6 +78,25 @@ export function makeServer() {
 
                 return new Response(204);
             });
+
+            this.post('/login', (schema, request) => {
+                const { usuario, senha } = JSON.parse(request.requestBody)
+
+                const user = schema.users.findBy({ usuario, senha })
+
+                if (!user) {
+                    return new Response(
+                        401,
+                        {},
+                        { error: 'Erro: Usuário ou senha inválidos' }
+                    )
+                }
+
+                return {
+                    usuario: user
+                }
+            })
+
 
             this.get('/clientes', (schema) => {
                 return schema.clientes.all();
@@ -97,7 +116,7 @@ export function makeServer() {
                 const cliente = schema.clientes.find(id);
 
                 if (!cliente) {
-                    return new Response(404, {}, { error: 'Cliente não encontrado.' });
+                    return new Response(404, {}, { error: 'Erro: Cliente não encontrado.' });
                 }
 
                 cliente.update(data);
@@ -113,7 +132,7 @@ export function makeServer() {
                     return new Response(
                         404,
                         {},
-                        { error: 'Cliente não encontrado.' }
+                        { error: 'Erro: Cliente não encontrado.' }
                     )
                 }
 
