@@ -56,7 +56,9 @@ function NovoUsuario() {
 
         //validação simples dos campos obrigatórios
         if (!nome || !telefone || !senha) {
-            setMensagemErro('Erro: Preencher os campos obrigatórios.')
+            setTimeout(() => { //delay para exibir a mensagem de erro
+                setMensagemErro('Erro: Preencha todos os campos obrigatórios')
+            }, 1000)
             return
             //"if": estrutura condicional (ex: "se (tal, coisa, acontece) {faça isso}")"}
             //"!": operador lógico "não" (negação)
@@ -65,7 +67,9 @@ function NovoUsuario() {
         }
 
         if (senha !== confirmarSenha) {
-            setMensagemErro('Erro: As senhas não coincidem.')
+            setTimeout(() => {
+                setMensagemErro('Erro: As senhas não coincidem')
+            }, 1000)
             return
             //"==": operador de igualdade ampla (compara valores, ignorando tipos de dado)
         }
