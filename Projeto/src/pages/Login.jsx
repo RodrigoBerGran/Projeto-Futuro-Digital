@@ -1,16 +1,32 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
 
     const [usuario, setUsuario] = useState('')
     const [senha, setSenha] = useState('')
+    const [mensagem, setMensagem] = useState('')
+    const [tipoMensagem, setTipoMensagem] = useState('')
 
+    //redirecionar após logar
+    const navigate = useNavigate()
+
+    const mostrarMensagem = (texto, tipo) => {
+        setMensagem(texto)
+        setTipoMensagem(tipo)
+
+        setTimeout(() => {
+            setMensagem('')
+        }, 3000)
+    }
+
+    //função assíncrona entrar, e impedir comportamento padrão do navegador
     const handleEntrar = async (e) => {
         e.preventDefault()
 
+        //validação, verifica se usuario e senha foram inputados
         if (!usuario || !senha) {
-            alert('Informe usuário e senha')
+            mostrarMensagem('Informe usuário e senha', 'erro')
             return
         }
 
@@ -27,21 +43,27 @@ function Login() {
                 })
             })
 
+            //verifica se a resposta do back, se usuário/senha são válidos
             if (!response.ok) {
-                throw new Error('Erro: Usuário ou senha inválidos')
+                throw new Error('Usuário ou senha inválidos')
             }
 
 
             const data = await response.json()
 
-            alert(`Bem-vindo, ${data.usuario.nome}`)
+            mostrarMensagem(`Bem-vindo, ${data.usuario.usuario}`, 'sucesso')
 
+            setTimeout(() => {
+                navigate('/Clientes')
+            }, 1500)
+
+
+            //se der erro exiba a msg de erro
         } catch (error) {
-            alert(error.message)
+            mostrarMensagem(error.message, 'erro')
         }
+
     }
-
-
 
     return (
         <>
@@ -68,6 +90,13 @@ function Login() {
                             onChange={(e) => setSenha(e.target.value)}
                         />
                     </div>
+
+                    {mensagem && (
+                        <div className={`mensagem ${tipoMensagem}`}>
+                            {mensagem}
+                        </div>
+                    )}
+
 
                     <div>
                         <button type="submit" className="botoes-agrupados">Entrar</button>

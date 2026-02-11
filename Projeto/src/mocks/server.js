@@ -10,15 +10,16 @@ export function makeServer() {
         seeds(server) {
 
             server.create('usuario', {
-                nome: 'Usuário Teste',
+                usuario: 'Usuário',
                 dataNascimento: '1995-01-01',
                 telefone: '11999999999',
                 email: 'usuario@email.com',
-                senha: '123456'
+                senha: '123'
             })
 
+
             server.create('cliente', {
-                nome: 'Cliente Teste',
+                cliente: 'Cliente',
                 telefone: '11988887777',
                 email: 'cliente@email.com',
                 rua: 'Rua Exemplo',
@@ -54,7 +55,7 @@ export function makeServer() {
                 let usuario = schema.usuarios.find(id);
 
                 if (!usuario) {
-                    return new Response(404, {}, { error: 'Erro: Usuário não encontrado.' });
+                    return new Response(404, {}, { error: 'Usuário não encontrado.' });
                 }
 
                 usuario.update(data);
@@ -70,7 +71,7 @@ export function makeServer() {
                     return new Response(
                         404,
                         {},
-                        { error: 'Erro: Usuário não encontrado.' }
+                        { error: 'Usuário não encontrado.' }
                     )
                 }
 
@@ -82,13 +83,13 @@ export function makeServer() {
             this.post('/login', (schema, request) => {
                 const { usuario, senha } = JSON.parse(request.requestBody)
 
-                const user = schema.users.findBy({ usuario, senha })
+                const user = schema.usuarios.findBy({ usuario, senha })
 
                 if (!user) {
                     return new Response(
                         401,
                         {},
-                        { error: 'Erro: Usuário ou senha inválidos' }
+                        { error: 'Usuário ou senha inválidos' }
                     )
                 }
 
@@ -96,6 +97,7 @@ export function makeServer() {
                     usuario: user
                 }
             })
+
 
 
             this.get('/clientes', (schema) => {
@@ -116,7 +118,7 @@ export function makeServer() {
                 const cliente = schema.clientes.find(id);
 
                 if (!cliente) {
-                    return new Response(404, {}, { error: 'Erro: Cliente não encontrado.' });
+                    return new Response(404, {}, { error: 'Cliente não encontrado.' });
                 }
 
                 cliente.update(data);
@@ -132,7 +134,7 @@ export function makeServer() {
                     return new Response(
                         404,
                         {},
-                        { error: 'Erro: Cliente não encontrado.' }
+                        { error: 'Cliente não encontrado.' }
                     )
                 }
 

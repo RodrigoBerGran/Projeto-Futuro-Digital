@@ -39,7 +39,7 @@ function NovoCliente() {
 
         if (!nome || !telefone) {
             setTimeout(() => {
-                setMensagemErro('Erro: Preencha todos os campos obrigatórios')
+                setMensagemErro('Preencha todos os campos obrigatórios')
             }, 1000)
             return
         }

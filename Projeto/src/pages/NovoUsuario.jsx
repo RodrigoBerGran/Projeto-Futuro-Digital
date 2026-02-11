@@ -68,7 +68,7 @@ function NovoUsuario() {
 
         if (senha !== confirmarSenha) {
             setTimeout(() => {
-                setMensagemErro('Erro: As senhas não coincidem')
+                setMensagemErro('As senhas não coincidem')
             }, 1000)
             return
             //"==": operador de igualdade ampla (compara valores, ignorando tipos de dado)
