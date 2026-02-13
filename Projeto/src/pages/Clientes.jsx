@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 
 function Clientes() {
 
+    // estado para armazenar clientes, texto digitado e busca
     const [clientes, setClientes] = useState([])
+    const [textoDigitado, setTextoDigitado] = useState('')
     const [busca, setBusca] = useState('')
+
 
     // Buscar clientes do mock
     useEffect(() => {
@@ -13,45 +16,57 @@ function Clientes() {
             .then(data => setClientes(data.clientes))
     }, [])
 
-    // Função para normalizar texto (remover acentos e converter para minúsculas)
-    const normalizar = (texto) =>
-        texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
-
-    // Filtrar pelo campo "cliente"
+    // Filtrar clientes apenas após clicar
     const clientesFiltrados = clientes.filter((c) =>
-        normalizar(c.cliente).includes(normalizar(busca))
+        c.cliente.toLowerCase().includes(busca.toLowerCase())
     )
 
     return (
         <>
-            <h1>Clientes</h1>
-
             <div>
                 <input
                     type="search"
                     placeholder="Buscar Cliente"
-                    value={busca}
-                    onChange={(e) => setBusca(e.target.value)}
+                    value={textoDigitado}
+                    onChange={(e) => setTextoDigitado(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setBusca(textoDigitado)
+                        }
+                    }}
                 />
 
-                <button>
+                <button
+                    onClick={() => setBusca(textoDigitado)}
+                >
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
 
+            <div id="cliente-card">
+                <ul>
+                    {busca !== '' && clientesFiltrados.length > 0 && (
+                        clientesFiltrados.map((c) => (
+                            <li key={c.id}>
+                                <strong>{c.cliente}</strong><br />
+                                {c.consumo} kWh <br />
+                                R$ {c.valor} <br />
+                                {c.telefone} <br />
+                                {c.email} <br />
+                            </li>
+                        ))
+                    )}
 
-            <ul>
-                {clientesFiltrados.map((c) => (
-                    <li key={c.id}>
-                        {c.cliente} - {c.telefone}
-                    </li>
-                ))}
-            </ul>
+                    {busca !== '' && clientesFiltrados.length === 0 && (
+                        <p>Nenhum cliente encontrado.</p>
+                    )}
+                </ul>
+            </div>
 
-            <nav>
-                <Link to="/Novo-Cliente">Novo Cliente</Link><br />
-                <Link to="/">Início</Link>
-            </nav>
+            <div className="botoes-grupo">
+                <Link to="/Novo-Cliente" className="botoes-agrupados">Novo</Link><br />
+                <Link to="/" className="botoes-agrupados">Início</Link>
+            </div>
         </>
     )
 }

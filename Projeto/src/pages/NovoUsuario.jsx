@@ -57,7 +57,7 @@ function NovoUsuario() {
         //validação simples dos campos obrigatórios
         if (!nome || !telefone || !senha) {
             setTimeout(() => { //delay para exibir a mensagem de erro
-                setMensagemErro('Erro: Preencha todos os campos obrigatórios')
+                setMensagemErro('Preencha os campos obrigatórios')
             }, 1000)
             return
             //"if": estrutura condicional (ex: "se (tal, coisa, acontece) {faça isso}")"}
