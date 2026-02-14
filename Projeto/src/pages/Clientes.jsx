@@ -23,49 +23,53 @@ function Clientes() {
 
     return (
         <>
-            <div>
-                <input
-                    type="search"
-                    placeholder="Buscar Cliente"
-                    value={textoDigitado}
-                    onChange={(e) => setTextoDigitado(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            setBusca(textoDigitado)
-                        }
-                    }}
-                />
+            <div id="cliente-container">
+                <div>
+                    <input
+                        id="cliente-busca"
+                        type="search"
+                        placeholder="Buscar Cliente"
+                        value={textoDigitado}
+                        onChange={(e) => setTextoDigitado(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                setBusca(textoDigitado)
+                            }
+                        }}
+                    />
 
-                <button
-                    onClick={() => setBusca(textoDigitado)}
-                >
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
+                    <button
+                        onClick={() => setBusca(textoDigitado)}
+                    >
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
 
-            <div id="cliente-card">
-                <ul>
-                    {busca !== '' && clientesFiltrados.length > 0 && (
-                        clientesFiltrados.map((c) => (
-                            <li key={c.id}>
-                                <strong>{c.cliente}</strong><br />
-                                {c.consumo} kWh <br />
-                                R$ {c.valor} <br />
-                                {c.telefone} <br />
-                                {c.email} <br />
-                            </li>
-                        ))
-                    )}
+                <div id="cliente-card">
+                    <ul>
+                        {busca !== '' && clientesFiltrados.length > 0 && (
+                            clientesFiltrados.map((c) => (
+                                <li key={c.id}>
+                                    <strong>{c.cliente}</strong><br />
+                                    {c.consumo} kWh <br />
+                                    R$ {c.valor} <br />
+                                    {c.telefone} <br />
+                                    {c.email} <br />
+                                </li>
+                            ))
+                        )}
 
-                    {busca !== '' && clientesFiltrados.length === 0 && (
-                        <p>Nenhum cliente encontrado.</p>
-                    )}
-                </ul>
-            </div>
+                        {busca !== '' && clientesFiltrados.length === 0 && (
+                            <p>Nenhum cliente encontrado.</p>
+                        )}
+                    </ul>
+                </div>
 
-            <div className="botoes-grupo">
-                <Link to="/Novo-Cliente" className="botoes-agrupados">Novo</Link><br />
-                <Link to="/" className="botoes-agrupados">Início</Link>
+                <nav className="botoes-nav">
+                    <Link to="/" className="btn-nav">Início</Link>
+                    <Link to="/Novo-Cliente" className="btn-nav">Novo</Link>
+                </nav>
+
             </div>
         </>
     )
