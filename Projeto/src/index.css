@@ -42,7 +42,7 @@ form {
 }
 
 ::placeholder {
-    color: grey;
+    color: rgb(128, 128, 128);
     opacity: 1;
 }
 
@@ -59,15 +59,15 @@ a {
 }
 
 .mensagem.erro {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+    color: rgb(114, 28, 36);
+    background-color: rgb(248, 215, 218);
+    border: 1px solid rgb(245, 198, 203);
 }
 
 .mensagem.sucesso {
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
+    color: rgb(21, 87, 36);
+    background-color: rgb(212, 237, 218);
+    border: 1px solid rgb(195, 230, 203);
 }
 
 
@@ -79,7 +79,7 @@ a.botoes-agrupados {
     padding: 10px 19px;
     font-size: 1.2rem;
     font-weight: bold;
-    color: white;
+    color: rgb(255, 255, 255);
     background: linear-gradient(rgba(15, 125, 195, 1) 0%,
             rgba(5, 50, 125, 1) 100%);
 }
@@ -111,7 +111,7 @@ input {
     max-width: 200px;
     padding: 10px;
     font-size: 1rem;
-    border: 2px solid #ccc;
+    border: 2px solid rgb(200, 200, 200);
     border-radius: 5px;
     width: 100%;
 }
@@ -146,19 +146,19 @@ h1 {
 }
 
 .new {
-    color: #107DC2;
-    background-image: linear-gradient(#107DC2, #05317D 100%);
+    color: rgb(16, 125, 194);
+    background-image: linear-gradient(rgb(16, 125, 194), rgb(5, 49, 125) 100%);
 }
 
 .person {
-    color: #69b91e;
-    background-image: linear-gradient(#69b91e, #2d730f 100%);
+    color: rgb(105, 185, 30);
+    background-image: linear-gradient(rgb(105, 185, 30), rgb(45, 115, 15) 100%);
 }
 
 .mensagem-sucesso {
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
+    color: rgb(21, 87, 36);
+    background-color: rgb(212, 237, 218);
+    border: 1px solid rgb(195, 230, 203);
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -166,9 +166,9 @@ h1 {
 }
 
 .mensagem-erro {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+    color: rgb(114, 28, 36);
+    background-color: rgb(248, 215, 218);
+    border: 1px solid rgb(245, 198, 203);
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -207,9 +207,46 @@ h1 {
 }
 
 #cliente-card {
+    padding: 15px;
     width: 500px;
     height: 250px;
     box-shadow: 0px 0px 15px 15px rgba(200, 200, 200);
+}
+
+.cliente-item h3 {
+    text-align: center;
+    margin: 0 0 8px 0;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.cliente-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.baixo {
+    background-color: rgb(175, 175, 175);
+}
+
+.medio {
+    background-color: rgb(16, 125, 194);
+}
+
+.alto {
+    background-color:  rgb(105, 185, 30);
 }
 
 .botoes-nav {

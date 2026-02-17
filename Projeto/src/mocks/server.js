@@ -27,7 +27,7 @@ export function makeServer() {
                 bairro: 'Centro',
                 cidade: 'São Paulo',
                 cep: '01000-000',
-                consumo: '1500',
+                consumo: '100',
                 valor: '200.00'
             })
         },
