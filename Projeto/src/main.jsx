@@ -5,9 +5,11 @@ import { makeServer } from './mocks/server.js'
 import './index.css'
 import App from './App.jsx'
 
-if (import.meta.env.DEV) {
-  makeServer()
-}
+// Desenvolvimento
+// if (import.meta.env.DEV) {makeServer()}
+
+// Produção
+makeServer()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
