@@ -1,11 +1,12 @@
+// imports
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ClientesAPI } from '../services/ClientesAPI';
 
-// Várias explicacões estão nos comentarios do arquivo "NovoUsuario.jsx"
-
+// componente funcional
 function NovoCliente() {
 
+    // variáveis de estado para armazenar os valores dos campos do formulário
     const [nome, setNome] = useState('')
     const [telefone, setTelefone] = useState('')
     const [email, setEmail] = useState('')
@@ -31,12 +32,14 @@ function NovoCliente() {
         }
     }, [mensagemErro, mensagemSucesso])
 
+    // verificar se os campos obrigatórias estão preenchidos
     const handleCadastrar = async (e) => {
         e.preventDefault()
 
         setMensagemSucesso('')
         setMensagemErro('')
 
+        // se não estão, exiba essa msg após 1 segundo
         if (!nome || !telefone) {
             setTimeout(() => {
                 setMensagemErro('Preencha todos os campos obrigatórios')
@@ -44,6 +47,7 @@ function NovoCliente() {
             return
         }
 
+        // criar o objeto JSON com os dados do novo cliente a ser cadastrado
         const clienteNovo = {
             nome,
             telefone,
@@ -57,6 +61,7 @@ function NovoCliente() {
             conta
         }
 
+        // tentar cadastrar o cliente usando a API, e exibir a mensagem de sucesso ou erro
         try {
             await ClientesAPI.create(clienteNovo)
             setMensagemSucesso('Cliente Cadastrado com Sucesso!')
@@ -72,7 +77,7 @@ function NovoCliente() {
             setConsumo('')
             setConta('')
 
-        } catch (error) {
+        } catch (error) { // deu ruim? exiba essa msg
             setMensagemSucesso('')
             setMensagemErro(
                 error.response?.data?.error ||
@@ -81,12 +86,15 @@ function NovoCliente() {
         }
     }
 
+    // a página
     return (
         <>
+            {/* formulário */}
             <div>
                 <form id="NovoCliente" onSubmit={handleCadastrar} noValidate>
                     <h1><span className="new">Novo</span><span className="person">Cliente</span></h1>
 
+                    {/* define onde as msgs de sucesso/erro aparecem */}
                     {mensagemSucesso && (
                         <p className="mensagem-sucesso">{mensagemSucesso}</p>
                     )}
@@ -95,6 +103,7 @@ function NovoCliente() {
                         <p className="mensagem-erro">{mensagemErro}</p>
                     )}
 
+                    {/* "caixa" com os "inputs" */}
                     <div>
                         <label title="Campo Obrigatório">Nome*
                             <input
@@ -200,6 +209,7 @@ function NovoCliente() {
                             /></label>
                     </div>
 
+                    {/* botões de ação */}
                     <div className='botoes-grupo'>
                         <Link to="/" className="botoes-agrupados">Início</Link>
                         <button type="submit" className="botoes-agrupados">Cadastrar</button>
@@ -209,4 +219,6 @@ function NovoCliente() {
         </>
     )
 }
+
+// exportar o componente
 export default NovoCliente
