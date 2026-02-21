@@ -130,29 +130,30 @@ function Clientes() {
                                         // Modo exibir
                                         <>
                                             <button
-                                                className="btn-editar"
+                                                id="btn-editar"
                                                 onClick={() => setClienteEditando(c)}
                                             >
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
 
                                             <h3>{c.cliente}</h3>
-
-
-                                            <div className="linha-consumo">
-                                                <span>
-                                                    <strong>Consumo:</strong> {c.consumo} kWh
-                                                </span>
-
-                                                <span className={`etiqueta ${etiqueta.classe}`}>
+                                            <div>
+                                                <h4>Consumo Médio:<span className={`etiqueta ${etiqueta.classe}`}>
                                                     {etiqueta.texto}
-                                                </span>
+                                                </span></h4>
+                                                {c.consumo} kWh, R$ {c.valor}
                                             </div>
 
-                                            <span><strong>Valor:</strong> R$ {c.valor}</span>
-                                            <span><strong>Telefone:</strong> {c.telefone}</span>
-                                            <span><strong>Email:</strong> {c.email}</span>
+                                            <div>
+                                                <h4>Contatos:</h4>
+                                                <div>Fone: {c.telefone}, E-mail: {c.email}</div>
+                                            </div>
 
+                                            <div>
+                                                <h4>Endereço:</h4>
+                                                <div>{c.rua}, Nº: {c.numero}, CEP: {c.cep}</div>
+                                                <div>Bairro: {c.bairro}, Cidade: {c.cidade}</div>
+                                            </div>
                                         </>
                                     )}
                                 </div>
