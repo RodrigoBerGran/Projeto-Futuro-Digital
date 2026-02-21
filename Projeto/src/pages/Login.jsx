@@ -3,14 +3,16 @@ import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
 
+    // váriaveis para rmazenar os valores dos campos de usuário e msgs
     const [usuario, setUsuario] = useState('')
     const [senha, setSenha] = useState('')
     const [mensagem, setMensagem] = useState('')
     const [tipoMensagem, setTipoMensagem] = useState('')
 
-    //redirecionar após logar
+    // hook para redirecionar para outra página
     const navigate = useNavigate()
 
+    //função para exibir as msgs de erro e sucesso, e faza-las sumir após 3 segundos
     const mostrarMensagem = (texto, tipo) => {
         setMensagem(texto)
         setTipoMensagem(tipo)
@@ -20,7 +22,7 @@ function Login() {
         }, 3000)
     }
 
-    //função assíncrona entrar, e impedir comportamento padrão do navegador
+    //função assíncrona entrar, e impedir comportamento padrão do navegador (recarregar página)
     const handleEntrar = async (e) => {
         e.preventDefault()
 
@@ -48,7 +50,7 @@ function Login() {
                 throw new Error('Usuário ou senha inválidos')
             }
 
-
+            // se for válido, exibe a msg e redireciona a página após 1,5 segundos
             const data = await response.json()
 
             mostrarMensagem(`Bem-vindo, ${data.usuario.usuario}`, 'sucesso')

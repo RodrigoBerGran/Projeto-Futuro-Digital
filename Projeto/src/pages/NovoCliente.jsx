@@ -211,7 +211,7 @@ function NovoCliente() {
 
                     {/* botões de ação */}
                     <div className='botoes-grupo'>
-                        <Link to="/" className="botoes-agrupados">Início</Link>
+                        <Link to="/Clientes" className="botoes-agrupados">Buscar</Link>
                         <button type="submit" className="botoes-agrupados">Cadastrar</button>
                     </div>
                 </form>

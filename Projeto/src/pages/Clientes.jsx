@@ -8,6 +8,8 @@ function Clientes() {
     const [textoDigitado, setTextoDigitado] = useState('')
     const [busca, setBusca] = useState('')
 
+    // estado para armazenar o cliente que está sendo editado (null se nenhum)
+    const [clienteEditando, setClienteEditando] = useState(null)
 
     // Buscar clientes do mock
     useEffect(() => {
@@ -16,6 +18,7 @@ function Clientes() {
             .then(data => setClientes(data.clientes))
     }, [])
 
+    // função para determinar a etiqueta com base no consumo
     function getEtiqueta(consumo) {
         const valor = Number(consumo)
 
@@ -25,7 +28,7 @@ function Clientes() {
             return { texto: "Médio", classe: "medio" }
         } else if (valor >= 1001) {
             return { texto: "Alto", classe: "alto" }
-        } 
+        }
     }
 
     // Filtrar clientes apenas após clicar
@@ -68,21 +71,90 @@ function Clientes() {
                         clientesFiltrados.map((c) => {
 
                             const etiqueta = getEtiqueta(c.consumo)
+                            const estaEditando = clienteEditando?.id === c.id
 
                             return (
                                 <div key={c.id} className="cliente-item">
-                                    <h3>{c.cliente}</h3>
 
-                                    <span className={`etiqueta ${etiqueta.classe}`}>
-                                        {etiqueta.texto}
-                                    </span>
+                                    {estaEditando ? (
 
-                                    <div className="cliente-info">
-                                        <span><strong>Consumo:</strong> {c.consumo} kWh</span>
-                                        <span><strong>Valor:</strong> R$ {c.valor}</span>
-                                        <span><strong>Telefone:</strong> {c.telefone}</span>
-                                        <span><strong>Email:</strong> {c.email}</span>
-                                    </div>
+                                        // Modo editar
+                                        <>
+                                            <input
+                                                value={clienteEditando.cliente}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cliente: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                value={clienteEditando.consumo}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        consumo: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <button
+                                                onClick={() => {
+                                                    // Atualizar no mock
+                                                    fetch(`/api/clientes/${c.id}`, {
+                                                        method: 'PUT',
+                                                        headers: { 'Content-Type': 'application/json' },
+                                                        body: JSON.stringify(clienteEditando)
+                                                    })
+
+                                                    // Atualizar na tela
+                                                    setClientes(clientes.map(cli =>
+                                                        cli.id === c.id ? clienteEditando : cli
+                                                    ))
+
+                                                    setClienteEditando(null)
+                                                }}
+                                            >
+                                                Salvar
+                                            </button>
+
+                                            <button onClick={() => setClienteEditando(null)}>
+                                                Cancelar
+                                            </button>
+                                        </>
+
+                                    ) : (
+
+                                        // Modo exibir
+                                        <>
+                                            <button
+                                                className="btn-editar"
+                                                onClick={() => setClienteEditando(c)}
+                                            >
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+
+                                            <h3>{c.cliente}</h3>
+
+
+                                            <div className="linha-consumo">
+                                                <span>
+                                                    <strong>Consumo:</strong> {c.consumo} kWh
+                                                </span>
+
+                                                <span className={`etiqueta ${etiqueta.classe}`}>
+                                                    {etiqueta.texto}
+                                                </span>
+                                            </div>
+
+                                            <span><strong>Valor:</strong> R$ {c.valor}</span>
+                                            <span><strong>Telefone:</strong> {c.telefone}</span>
+                                            <span><strong>Email:</strong> {c.email}</span>
+
+                                        </>
+                                    )}
                                 </div>
                             )
                         })
