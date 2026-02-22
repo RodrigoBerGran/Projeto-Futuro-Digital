@@ -213,15 +213,22 @@ h1 {
     box-shadow: 0px 0px 15px 15px rgba(200, 200, 200);
 }
 
+.cliente-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #btn-editar {
     color: rgb(175, 175, 175);
     background: none;
-    padding: 5px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .cliente-item h3 {
-    text-align: center;
-    margin: 0 0 8px 0;
+    padding: 0px;
+    margin: 0px;
     font-weight: bold;
     font-size: 1.3rem;
 }
@@ -235,7 +242,6 @@ h1 {
 
 .linha-consumo {
     display: flex;
-    align-items: center;
     gap: 10px;
 }
 
@@ -258,7 +264,19 @@ h1 {
 }
 
 .alto {
-    background-color:  rgb(105, 185, 30);
+    background-color: rgb(105, 185, 30);
+}
+
+.info-titulo {
+    margin-bottom: 5px;
+}
+
+.info-consumo, .info-contato {
+    margin-bottom: 15px;
+}
+
+.info-endereco {
+    margin-bottom: 5px;
 }
 
 .botoes-nav {

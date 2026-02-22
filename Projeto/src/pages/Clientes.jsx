@@ -129,30 +129,34 @@ function Clientes() {
 
                                         // Modo exibir
                                         <>
-                                            <button
-                                                id="btn-editar"
-                                                onClick={() => setClienteEditando(c)}
-                                            >
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
+                                            <div className="cliente-cabecalho">
+                                                <h3>{c.cliente}</h3>
 
-                                            <h3>{c.cliente}</h3>
+                                                <button
+                                                    id="btn-editar"
+                                                    title="Editar/Excluir"
+                                                    onClick={() => setClienteEditando(c)}
+                                                >
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                            </div>
+
                                             <div>
                                                 <h4>Consumo Médio:<span className={`etiqueta ${etiqueta.classe}`}>
                                                     {etiqueta.texto}
                                                 </span></h4>
-                                                {c.consumo} kWh, R$ {c.valor}
+                                                <div className='info-consumo'>• {c.consumo} kWh • R$ {c.valor}</div>
                                             </div>
 
                                             <div>
-                                                <h4>Contatos:</h4>
-                                                <div>Fone: {c.telefone}, E-mail: {c.email}</div>
+                                                <h4 className='info-titulo'>Contatos:</h4>
+                                                <div className='info-contato'>• Fone: {c.telefone} • E-mail: {c.email}</div>
                                             </div>
 
                                             <div>
-                                                <h4>Endereço:</h4>
-                                                <div>{c.rua}, Nº: {c.numero}, CEP: {c.cep}</div>
-                                                <div>Bairro: {c.bairro}, Cidade: {c.cidade}</div>
+                                                <h4 className='info-titulo'>Endereço:</h4>
+                                                <div className='info-endereco'>• {c.rua} • Nº: {c.numero} • CEP: {c.cep}</div>
+                                                <div>• Bairro: {c.bairro} • Cidade: {c.cidade}</div>
                                             </div>
                                         </>
                                     )}
