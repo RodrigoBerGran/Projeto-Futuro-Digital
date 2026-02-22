@@ -226,6 +226,10 @@ h1 {
     margin: 0px;
 }
 
+.inputs-modo-editar {
+    padding: 5px;
+}
+
 .cliente-item h3 {
     padding: 0px;
     margin: 0px;
@@ -271,7 +275,8 @@ h1 {
     margin-bottom: 5px;
 }
 
-.info-consumo, .info-contato {
+.info-consumo,
+.info-contato {
     margin-bottom: 15px;
 }
 

@@ -81,6 +81,7 @@ function Clientes() {
                                         // Modo editar dados
                                         <>
                                             <input
+                                                className='inputs-modo-editar'
                                                 value={clienteEditando.cliente}
                                                 onChange={(e) =>
                                                     setClienteEditando({
@@ -91,11 +92,100 @@ function Clientes() {
                                             />
 
                                             <input
+                                                className='inputs-modo-editar'
                                                 value={clienteEditando.consumo}
                                                 onChange={(e) =>
                                                     setClienteEditando({
                                                         ...clienteEditando,
                                                         consumo: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.valor}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        valor: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.telefone}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        telefone: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.email}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        email: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.rua}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        rua: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.numero}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        numero: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.cep}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cep: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.bairro}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        bairro: e.target.value
+                                                    })
+                                                }
+                                            />
+
+                                            <input
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.cidade}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cidade: e.target.value
                                                     })
                                                 }
                                             />
