@@ -78,7 +78,7 @@ function Clientes() {
 
                                     {estaEditando ? (
 
-                                        // Modo editar
+                                        // Modo editar dados
                                         <>
                                             <input
                                                 value={clienteEditando.cliente}
@@ -127,7 +127,7 @@ function Clientes() {
 
                                     ) : (
 
-                                        // Modo exibir
+                                        // Modo exibir dados
                                         <>
                                             <div className="cliente-cabecalho">
                                                 <h3>{c.cliente}</h3>
