@@ -226,7 +226,20 @@ h1 {
     margin: 0px;
 }
 
+#cliente-editar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
 .inputs-modo-editar {
+    padding: 5px;
+    max-width: 235px;
+}
+
+#cliente-editar button {
+    grid-column: span 1;
+    max-width: 235px;
     padding: 5px;
 }
 
