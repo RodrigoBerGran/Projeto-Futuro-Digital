@@ -6,10 +6,10 @@ import './index.css'
 import App from './App.jsx'
 
 // Desenvolvimento
-if (import.meta.env.DEV) {makeServer()}
+// if (import.meta.env.DEV) {makeServer()}
 
 // Produção
-// makeServer()
+makeServer()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
