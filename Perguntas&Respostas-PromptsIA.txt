@@ -327,3 +327,11 @@ function handleChange(e) {
 <input type="text" onChange={handleChange} />
  
 Em resumo, e é a forma padrão do React para gerenciar interações do usuário de maneira eficiente e compatível entre navegadores. 
+
+P) O que é modal na programação?
+R) Um modal é um elemento de interface gráfica, comumente chamado de "janela modal" ou caixa de diálogo, que se sobrepõe à página principal. Ao ser ativado, ele escurece ou desabilita o conteúdo de fundo (overlay), forçando o usuário a interagir com ele antes de retornar à tela principal.
+Principais Características e Usos:
+Interrupção Funcional: Diferente de um pop-up comum, o modal bloqueia o fluxo de trabalho até que uma ação seja realizada (fechar, confirmar ou cancelar).
+Aplicações Comuns: Exibir mensagens de alerta, formulários de login/cadastro, confirmar exclusões, mostrar imagens em detalhes (lightbox) ou solicitar aceitação de termos.
+Implementação: Geralmente construído com HTML, CSS e JavaScript (ou via tag <dialog> no HTML5 moderno), criando uma camada overlay. 
+O modal serve para focar a atenção do usuário em uma única tarefa importante sem mudar de página.

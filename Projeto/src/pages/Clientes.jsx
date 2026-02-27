@@ -11,6 +11,10 @@ function Clientes() {
     // estado para armazenar o cliente que está sendo editado (null se nenhum)
     const [clienteEditando, setClienteEditando] = useState(null)
 
+    // estado para controlar a exibição da modal de confirmação
+    const [confirmacao, setConfirmacao] = useState(null)
+    // null | { tipo: 'salvar' } | { tipo: 'excluir', id: number }
+
     // Buscar clientes do mock
     useEffect(() => {
         fetch('/api/clientes')
@@ -67,8 +71,66 @@ function Clientes() {
 
                 <div id="cliente-card">
 
+                    {/* Modal de confirmação de alterações */}
+                    {confirmacao && (
+                        <div className="modal-overlay">
+                            <div className="modal">
+
+                                <p>
+                                    {confirmacao.tipo === 'salvar'
+                                        ? 'Tem certeza que deseja salvar as alterações?'
+                                        : 'Tem certeza que deseja excluir este cliente?'}
+                                </p>
+
+                                <div className="modal-botoes">
+
+                                    <button
+                                        onClick={() => {
+
+                                            if (confirmacao.tipo === 'salvar') {
+
+                                                fetch(`/api/clientes/${clienteEditando.id}`, {
+                                                    method: 'PUT',
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify(clienteEditando)
+                                                })
+
+                                                setClientes(clientes.map(cli =>
+                                                    cli.id === clienteEditando.id
+                                                        ? clienteEditando
+                                                        : cli
+                                                ))
+
+                                                setClienteEditando(null)
+
+                                            } else if (confirmacao.tipo === 'excluir') {
+
+                                                fetch(`/api/clientes/${confirmacao.id}`, {
+                                                    method: 'DELETE'
+                                                })
+
+                                                setClientes(clientes.filter(
+                                                    cli => cli.id !== confirmacao.id
+                                                ))
+                                            }
+
+                                            setConfirmacao(null)
+                                        }}
+                                    >
+                                        Confirmar
+                                    </button>
+
+                                    <button onClick={() => setConfirmacao(null)}>
+                                        Cancelar
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {busca !== '' && clientesFiltrados.length > 0 &&
-                        clientesFiltrados.map((c) => {
+                        clientesFiltrados.map(c => {
 
                             const etiqueta = getEtiqueta(c.consumo)
                             const estaEditando = clienteEditando?.id === c.id
@@ -76,181 +138,174 @@ function Clientes() {
                             return (
                                 <div key={c.id} className="cliente-item">
 
-                                    {estaEditando ? (
+                                    {estaEditando && !confirmacao ? (
 
-                                        // Modo editar dados
-                                        <>
-                                            <div id="cliente-editar">
-                                                <input
-                                                    title='Nome'
-                                                    placeholder='Nome'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.cliente}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            cliente: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                        // Modo editar
+                                        <div id="cliente-editar">
+                                            <input
+                                                title='Nome'
+                                                placeholder='Nome'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.cliente}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cliente: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Consumo'
-                                                    placeholder='Consumo'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.consumo}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            consumo: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Consumo'
+                                                placeholder='Consumo'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.consumo}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        consumo: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Valor'
-                                                    placeholder='Valor'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.valor}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            valor: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Valor'
+                                                placeholder='Valor'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.valor}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        valor: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Telefone'
-                                                    placeholder='Telefone'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.telefone}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            telefone: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Telefone'
+                                                placeholder='Telefone'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.telefone}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        telefone: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='E-mail'
-                                                    placeholder='E-mail'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.email}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            email: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='E-mail'
+                                                placeholder='E-mail'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.email}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        email: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Rua'
-                                                    placeholder='Rua'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.rua}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            rua: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Rua'
+                                                placeholder='Rua'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.rua}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        rua: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Número'
-                                                    placeholder='Número'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.numero}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            numero: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Número'
+                                                placeholder='Número'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.numero}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        numero: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='CEP'
-                                                    placeholder='CEP'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.cep}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            cep: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='CEP'
+                                                placeholder='CEP'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.cep}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cep: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Bairro'
-                                                    placeholder='Bairro'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.bairro}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            bairro: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Bairro'
+                                                placeholder='Bairro'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.bairro}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        bairro: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <input
-                                                    title='Cidade'
-                                                    placeholder='Cidade'
-                                                    className='inputs-modo-editar'
-                                                    value={clienteEditando.cidade}
-                                                    onChange={(e) =>
-                                                        setClienteEditando({
-                                                            ...clienteEditando,
-                                                            cidade: e.target.value
-                                                        })
-                                                    }
-                                                />
+                                            <input
+                                                title='Cidade'
+                                                placeholder='Cidade'
+                                                className='inputs-modo-editar'
+                                                value={clienteEditando.cidade}
+                                                onChange={(e) =>
+                                                    setClienteEditando({
+                                                        ...clienteEditando,
+                                                        cidade: e.target.value
+                                                    })
+                                                }
+                                            />
 
-                                                <button
-                                                    onClick={() => {
-                                                        // Atualizar no mock
-                                                        fetch(`/api/clientes/${c.id}`, {
-                                                            method: 'PUT',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify(clienteEditando)
-                                                        })
+                                            <button
+                                                onClick={() => setConfirmacao({ tipo: 'salvar' })}
+                                            >
+                                                Salvar
+                                            </button>
 
-                                                        // Atualizar na tela
-                                                        setClientes(clientes.map(cli =>
-                                                            cli.id === c.id ? clienteEditando : cli
-                                                        ))
+                                            <button onClick={() => setClienteEditando(null)}>
+                                                Cancelar
+                                            </button>
+                                        </div>
 
-                                                        setClienteEditando(null)
-                                                    }}
-                                                >
-                                                    Salvar
-                                                </button>
-
-                                                <button onClick={() => setClienteEditando(null)}>
-                                                    Cancelar
-                                                </button>
-                                            </div>
-                                        </>
-
-                                    ) : (
+                                    ) : !confirmacao && (
 
                                         // Modo exibir dados
                                         <>
                                             <div className="cliente-cabecalho">
                                                 <h3>{c.cliente}</h3>
+                                                <div className="cliente-acoes">
+                                                    <button
+                                                        id="btn-editar"
+                                                        title="Editar"
+                                                        onClick={() => setClienteEditando(c)}
+                                                    >
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </button>
 
-                                                <button
-                                                    id="btn-editar"
-                                                    title="Editar/Excluir"
-                                                    onClick={() => setClienteEditando(c)}
-                                                >
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
+                                                    <button
+                                                        id="btn-excluir"
+                                                        title="Excluir"
+                                                        onClick={() => setConfirmacao({ tipo: 'excluir', id: c.id })}
+                                                    >
+                                                        <i class="fa-regular fa-trash-can"></i>
+                                                    </button>
+                                                </div>
                                             </div>
 
                                             <div>
@@ -287,7 +342,6 @@ function Clientes() {
                     <Link to="/" className="btn-nav">Início</Link>
                     <Link to="/Novo-Cliente" className="btn-nav">Novo</Link>
                 </nav>
-
             </div >
         </>
     )
