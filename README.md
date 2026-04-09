@@ -1,4 +1,4 @@
-<===================== Descrição: =====================>
+<===== Descrição: =====>
 
 Projeto do Curso Futuro Digital (Front-End).
 
@@ -34,7 +34,7 @@ Conteúdo Complementar:
 - JavaScript: https://www.youtube.com/playlist?list=PL2Fdisxwzt_d590u3uad46W-kHA0PTjjw
 - React: https://www.youtube.com/playlist?list=PL29TaWXah3iYzP5FGywXezXm4ZvBibGSk
 
-<===================== Conceitos Aplicados: =====================>
+<===== Conceitos Aplicados: =====>
 
     • useState e useEffect
 
@@ -60,7 +60,7 @@ Conteúdo Complementar:
 
     • Uso de <Link> para navegação interna
 
-<===================== Funcionalidades: =====================>
+<===== Funcionalidades: =====>
 
     • Autenticação
     - Login com validação de credenciais
@@ -96,7 +96,7 @@ Conteúdo Complementar:
     - Interface organizada em cards
     - Layout estruturado e padronizado
 
-<===================== Melhorias Futuras: =====================>
+<===== Melhorias Futuras: =====>
 
     • Proteção de rotas
     • Persistência de login com LocalStorage
